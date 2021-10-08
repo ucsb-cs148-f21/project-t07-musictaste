@@ -1,17 +1,24 @@
-Meeting Time: lect02
+Project: Music Taste WebApp
+Mentor: Alan, Nagarjun
 
-Type of meeting: Sprint Planning
+Meeting Time: Lecture 02 Weds Sept 29
 
-Team: Karanveer[x], Brandon[x], Laszlo[x], Kevin[]
+Type of meeting: Sprint Planning, Daily Scrum
+
+Team: Brandon Son [X], Karanina (Laszlo) Zim [X], Karanveer (KB) Benipal [X], Kevin Tran []
 
 Scribed Discussion:
 
-Laszlo is setting up github and will set up a meeting with karanveer to finish the github set up.
-Finishing a React Video before wednesday and setting up a hello world for React. (Brandon, Karanveer)
-Watch Springboot videos.
-Watch distinct backend videos.
-Brandon - springboot
-Karanveer - node.js
-Laszlo - Django
-Kevin - Flask
-Prepare for Wednesday meeting.
+Team: discussed stack options
+
+Brandon: will research Springboot and Git by next meeting. Will watch a React
+  tutorial and work on setting up Hello World demo.
+
+Laszlo: Set up Github. Will finish GitHub setup by next meeting and can reach
+  out to KB for assistance if needed. Will research Django and Git by next
+  meeting.
+
+KB: will research Node.js by next meeting. Will watch a React tutorial and work
+  on setting up Hello World demo.
+
+Kevin: absent (quarantine) will research Flask by next meeting.
