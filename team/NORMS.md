@@ -1,6 +1,8 @@
-Group 7 (Music Taste) Team Agreements
-* communicate about absences (but also anything and everything else)
-* contribute to a supportive environment: contribute your own creativity and
-  encourage team members to feel comfortable also contributing their own ideas
-  * don't be afraid to ask for help and take initiative in offering help
-  * focus on user experience
+Group 7 (Music Tastee) Group Norms: (subject to change)
+
+- Communicate with each other. This includes but not limited to missed days, missed deadlines, deviation from team plans.
+- Ask and get help to finish each individuals assignment for the week/long term.
+- Contribute to supportive environment where everybody feels comfortable contributing ideas
+- Don't be afraid to ask for help, and take initiative in offering help
+- Focus on the user experience of the app.
+- Focus on the objective for the week.
