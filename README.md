@@ -16,5 +16,6 @@ Team Members & GitHub Handles:
 
 Deployments:
 - Brandon's deployment: https://frozen-brook-59380.herokuapp.com/
+- Karanina's deployment: https://frozen-citadel-26811.herokuapp.com/
 - Karanveer's deployment: https://arcane-plains-31838.herokuapp.com
 - Kevin's deployment: https://still-tor-46366.herokuapp.com
