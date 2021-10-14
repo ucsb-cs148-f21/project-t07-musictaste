@@ -21,7 +21,8 @@ Deployments:
 - Karanina's deployment: https://frozen-citadel-26811.herokuapp.com/
 - Karanveer's deployment: https://dp83-hello-world-2.herokuapp.com
 - Karanveer's Repo: https://github.com/ksbenipal/Heroku-Deployment-App/tree/master
-- Kevin's deployment: https://still-tor-46366.herokuapp.com
+- Kevin's deployment: https://murmuring-wildwood-54924.herokuapp.com/
+- Kevin's Repo: https://github.com/320trankt/hello-world-node-app
 
 Tech Stack:
 - MERN stack
