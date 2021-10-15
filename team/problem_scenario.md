@@ -5,5 +5,4 @@ Extremely Rough Problem Scenario
 Persona: typical user, your average music enjoyer (Spotify user)
 
 - What is the goal, need, or desire?
-** desire to learn about personal listening habits
-** desire to connect with others via sharing music
+** desire to share music with friends along with small message

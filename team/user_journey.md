@@ -5,14 +5,17 @@ Extremely Rough User Journey:
 - What is the series of events that occur, in chronological order?
 (sample events which are subject to change and will likely be changed
   this weekend!)
-** Event 1: Music dump for social groups to share music with each other.
-  (how do we differ this from Spotify's collaborative playlist function?)
-  (Karanveer's idea)
-** Event 2: "Tinder" swiping - user swipes left or right on songs (Brandon's
-  idea)
-** Event 3: User is presented with comprehensive listening data, which can
-  be compare to other users' data. Data is presented in visual form and can
-  be saved and posted to social media apps. (Laszlo's idea)
-** Event 4: User can update their status with a song, lyric, etc. (Laszlo's
-  idea)
+** Event 1: User onboarding. User creates an account in the web app and
+    authorizes their Spotify account.
+** Event 2: User updates their user profile with a picture and a custom status
+    based on a song, album, artist, or lyric.
+** Event 3: User follows their friends.
+** Event 4: User creates a "music dump." User adds songs to the music dump
+    with the option of accompanying the songs with comments or messages.
+** Event 5: User shares the music dump with friends and toggles their read/
+    write privileges.
+** Event 6: User accesses a music dump that has been shared with them and
+    contributes to it.
+** Event 7: User exports the music dump to their Spotify account (as a
+    playlist).
 ** More to come!
