@@ -1,7 +1,7 @@
 Project: Music Taste WebApp
 Mentor: Alan, Nagarjun
 
-Meeting Time: Lecture 05, Monday October 11
+Meeting Time: Lecture 04, Monday October 11
 
 Type of meeting: Storytime/Sprint Planning
 

@@ -1,7 +1,7 @@
 Project: Music Taste WebApp
 Mentor: Alan, Nagarjun
 
-Meeting Time: Lecture 04 Weds Oct 6
+Meeting Time: Lecture 03 Weds Oct 6
 
 Type of meeting: daily scrum
 
