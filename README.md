@@ -8,6 +8,9 @@ Project Description:
     Spotify account data analysis. Perhaps tailor the app for UCSB students.
     (more to come during storytime)
   Our project is going to be a music dump webapp where users can track the music they've listened to, similar to a diary where they can share on the profile their listens and their listening history. It will also have a collaborative playlist feature which allows users to make playlists with their friends and introduces a tiered permission system to make changes to the playlist, similar to discord. 
+  
+User Roles:
+  Standard User: A standard user would have access to a customizable user profile and have the capability to create and contribute to collaborative playlists.
 
 
 Team Members & GitHub Handles:
