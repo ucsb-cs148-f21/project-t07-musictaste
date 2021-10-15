@@ -29,11 +29,11 @@ Specialization (Week 4):
 Tutorial Links:
 - Full MERN Stack:
     - insert
--MongoDB:
+- MongoDB:
     - insert
--Express.js:
+- Express.js:
     - insert
--React:
+- React:
     - insert
--Node.js:
+- Node.js:
     - insert
