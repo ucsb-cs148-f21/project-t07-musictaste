@@ -22,6 +22,7 @@ Team Members & GitHub Handles:
 Deployments:
 - Brandon's deployment: https://frozen-brook-59380.herokuapp.com/
 - Karanina's deployment: https://frozen-citadel-26811.herokuapp.com/
+- Karanina's deployment repo: https://github.com/laszlo-tw/frozen-citadel-26811/tree/master
 - Karanveer's deployment: https://dp83-hello-world-2.herokuapp.com
 - Karanveer's Repo: https://github.com/ksbenipal/Heroku-Deployment-App/tree/master
 - Kevin's deployment: https://murmuring-wildwood-54924.herokuapp.com/
