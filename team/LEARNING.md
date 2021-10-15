@@ -12,13 +12,13 @@ Existing Strengths:
 
 TODO:
 
-Basic MERN stack knowledge:
+Basic MERN stack knowledge (Week 3):
 - Kevin
 - KB
 - Laszlo
 - Brandon
 
-Specialization:
+Specialization (Week 4):
 - Backend(MongoDB, Node.js):
     - KB
     - Laszlo
