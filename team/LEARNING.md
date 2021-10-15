@@ -19,9 +19,9 @@ Basic MERN stack knowledge (Week 3):
 - Brandon
 
 Specialization (Week 4):
-- Backend(MongoDB, Node.js):
+- Backend(MongoDB, Node.js, Express.js):
     - KB
     - Laszlo
-- Frontend(React, Express.js):
+- Frontend(React, Node.js):
     - Kevin
     - Brandon
