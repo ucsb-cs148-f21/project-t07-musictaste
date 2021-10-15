@@ -25,3 +25,15 @@ Specialization (Week 4):
 - Frontend(React, Node.js):
     - Kevin
     - Brandon
+
+Tutorial Links:
+- Full MERN Stack:
+    -
+-MongoDB:
+    - 
+-Express.js:
+    - 
+-React:
+    -
+-Node.js:
+    -
