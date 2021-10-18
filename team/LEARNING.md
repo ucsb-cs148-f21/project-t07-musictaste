@@ -29,6 +29,7 @@ Specialization (Week 4):
 Tutorial Links:
 - Full MERN Stack:
     - Broad overview of the stack as a whole: https://www.mongodb.com/mern-stack
+    - Setup full stack tutorial: https://www.digitalocean.com/community/tutorials/getting-started-with-the-mern-stack
 - MongoDB:
     - insert
 - Express.js:
