@@ -7,6 +7,7 @@ import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import memories from "./images/memories.png";
 import useStyles from "./styles";
+import { Route, Switch, Router } from "react-router";
 
 const App = () => {
   const classes = useStyles();
