@@ -1,3 +1,8 @@
+\_articles contributions (for Lab03):
+- Brandon contributed Kevin's full stack deployment tutorial (see full MERN stack tutorial links below) to the js_articles channel
+- Laszlo contributed Laszlo's full stack deployment tutorial to the backend_articles channel
+- KB contributed KB's full stack deployment tutorial to the backend_articles channel
+
 Tech stack:
   - MongoDB
   - Express.js
