@@ -9,7 +9,7 @@ const Posts = () => {
   console.log(posts);
   return (
     <>
-      <h1>POSTS</h1>
+      <h1>TEST</h1>
       <Post />
       <Post />
     </>

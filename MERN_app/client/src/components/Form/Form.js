@@ -4,6 +4,8 @@ import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { createPost } from "../../actions/posts";
+import PictureUploader from "../User-profile/PictureUploader";
+
 const Form = () => {
   const [postData, setPostData] = useState({
     creator: "",
@@ -28,7 +30,8 @@ const Form = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Creating a Memory</Typography>
+        <Typography variant="h6">@brandonwrson</Typography>
+        <PictureUploader />
         <TextField
           name="creator"
           variant="outlined"

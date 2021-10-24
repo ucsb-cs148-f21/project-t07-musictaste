@@ -15,4 +15,8 @@ export default makeStyles(() => ({
   image: {
     marginLeft: "15px",
   },
+  user: {
+    display: "in-line",
+    border: "5px solid red",
+  },
 }));
