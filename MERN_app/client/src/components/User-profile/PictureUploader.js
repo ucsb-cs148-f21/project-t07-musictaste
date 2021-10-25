@@ -24,8 +24,8 @@ export default class PictureUploader extends React.Component {
   renderPreview() {
     if(this.state.src) {
       return (
-        <img src={this.state.src}/>
-      );
+        <img src={this.state.src} height="150" width="200"/>
+      ); 
     } else {
       return (
         <p>
@@ -56,8 +56,6 @@ export default class PictureUploader extends React.Component {
   render() {
     return (
       <div>
-        <h5>Picture Uploader</h5>
-
         <input
           type="file"
           onChange={this.handlePictureSelected.bind(this)}
