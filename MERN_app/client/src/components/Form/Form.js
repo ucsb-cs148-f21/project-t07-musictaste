@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { createPost } from "../../actions/posts";
 import PictureUploader from "../User-profile/PictureUploader";
-
+import PlaylistPreview from "../User-profile/PlaylistPreview";
 const Form = () => {
   const [postData, setPostData] = useState({
     creator: "",
@@ -30,73 +30,20 @@ const Form = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">@brandonwrson</Typography>
+        <Typography variant="h5">@brandonwrson</Typography>
         <br />
         <PictureUploader />
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        ></TextField>
-        <TextField
-          name="title"
-          variant="outlined"
-          label="title"
-          fullWidth
-          value={postData.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
-        ></TextField>
-        <TextField
-          name="message"
-          variant="outlined"
-          label="message"
-          fullWidth
-          value={postData.message}
-          onChange={(e) =>
-            setPostData({ ...postData, message: e.target.value })
-          }
-        ></TextField>
-        <TextField
-          name="tags"
-          variant="outlined"
-          label="tags"
-          fullWidth
-          value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
-        ></TextField>
-        <div className={classes.fileinput}>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
-          ></FileBase>
-        </div>
-        <Button
-          className={classes.buttonSubmit}
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
-          Submit
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
+        <br />
+        <Typography variant="body2"> 34 groups contributed to</Typography>
+        <br />
+        <Typography variant="body1">Most active playlists</Typography>
+        <form2 className={classes.form2}>
+          <PlaylistPreview className={classes.fileInput}></PlaylistPreview>
+          <PlaylistPreview className={classes.fileInput}></PlaylistPreview>
+        </form2>
+        <br />
+        <br />
+        <br />
       </form>
     </Paper>
   );

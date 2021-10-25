@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    border: "5px solid red",
+    //border: "5px solid red",
   },
   form: {
     display: "block",
@@ -21,5 +21,11 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+  },
+  form2: {
+    display: "inline-block",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    //border: "5px solid red"
   },
 }));
