@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { getPosts } from "./actions/posts";
 import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
+import FormUserProfile from "./components/Form/FormUserProfile";
 import memories from "./images/memories.png";
 import useStyles from "./styles";
 import PictureUploader from "./components/User-profile/PictureUploader";
@@ -41,7 +41,7 @@ const App = () => {
             </Grid>
             <Grid item xs={12} sm={4}>
               {" "}
-              <Form />
+              <FormUserProfile />
             </Grid>
           </Grid>
         </Container>
