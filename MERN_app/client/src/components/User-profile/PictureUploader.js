@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import styles from "./PictureUploader.css"
 export default class PictureUploader extends React.Component {
   constructor(props) {
     super(props);
@@ -26,13 +26,7 @@ export default class PictureUploader extends React.Component {
       return (
         <img src={this.state.src} height="150" width="200"/>
       ); 
-    } else {
-      return (
-        <p>
-          No Preview
-        </p>
-      );
-    }
+    } 
   }
 
   upload() {
@@ -56,21 +50,21 @@ export default class PictureUploader extends React.Component {
   render() {
     return (
       <div>
-        <input
+        <label for="upload-photo">Upload Profile Picture</label>
+        <input type="file" name="photo" onChange={this.handlePictureSelected.bind(this)}
+         id="upload-photo" />
+        {/* <input
           type="file"
           onChange={this.handlePictureSelected.bind(this)}
-        />
+        /> */}
         <br/>
         <div>
-        {this.renderPreview()}
+          {this.renderPreview()}
+          {this.upload.bind(this)}
         </div>
         <hr/>
-        <button
-          onClick={this.upload.bind(this)}
-        >
-          Upload
-        </button>
       </div>
+      
     );
   }
 }

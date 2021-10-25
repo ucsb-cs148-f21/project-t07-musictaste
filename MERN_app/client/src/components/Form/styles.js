@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
     border: "5px solid red",
   },
   form: {
-    display: "flex",
+    display: "block",
     flexWrap: "wrap",
     justifyContent: "center",
   },
