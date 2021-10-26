@@ -1,12 +1,12 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
-import useStyles from "./styles";
+import useStyles from "../Form/styles";
 import { createPost } from "../../actions/posts";
-import PictureUploader from "../User-profile/PictureUploader";
-import PlaylistPreview from "../User-profile/PlaylistPreview";
-const Form = () => {
+import PictureUploader from "./PictureUploader";
+import PlaylistPreview from "./PlaylistPreview";
+const FormUserProfile = () => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -51,4 +51,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormUserProfile;
