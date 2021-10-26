@@ -1,5 +1,5 @@
 import React from "react";
-import $ from "jquery";
+// import $ from "jquery";
 import styles from "./PictureUploader.css";
 export default class PictureUploader extends React.Component {
   constructor(props) {
@@ -27,23 +27,23 @@ export default class PictureUploader extends React.Component {
     }
   }
 
-  upload() {
-    var formData = new FormData();
+  // upload() {
+  //   var formData = new FormData();
 
-    formData.append("file", this.state.picture);
+  //   formData.append("file", this.state.picture);
 
-    $.ajax({
-      url: "/some/api/endpoint",
-      method: "POST",
-      data: formData,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        // Code to handle a succesful upload
-      },
-    });
-  }
+  //   $.ajax({
+  //     url: "/some/api/endpoint",
+  //     method: "POST",
+  //     data: formData,
+  //     cache: false,
+  //     contentType: false,
+  //     processData: false,
+  //     success: function (response) {
+  //       // Code to handle a succesful upload
+  //     },
+  //   });
+  // }
 
   render() {
     return (
@@ -62,7 +62,7 @@ export default class PictureUploader extends React.Component {
         <br />
         <div>
           {this.renderPreview()}
-          {this.upload.bind(this)}
+          {/* {this.upload.bind(this)} */}
         </div>
         <hr />
       </div>
