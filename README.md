@@ -34,21 +34,26 @@ Tech Stack:
 - Uses Javascript consistently through frontend and backend for ease of coding
 
 MVP Demo steps:
+
 Prerequistes:
 - Need to install the latest version of node on machine.
+
 Dependencies:
 - React - runs the front end
 - Axios - is used to make https requests and handle their responses in client/src/api/index.js
 - express - eliminates boiler plate abd helped to make simpler api for creating end points
 - mongoose - connecting to database
 - The rest of the dependencies are for small functionality for specific functions. To install these, when you open the server and client side respectively, run npm install on both and the dependencies will be installed. Ignore the vulnerabilities for now. (will be described below)
+
 Installation Steps:
 - Download files from tag onto local machine
 - open up two terminals and cd into MERN_app/client and MERN_app/server
 - run npm install to get all dependencies 
 - run npm start on both terminals
 - this will prompt the local browser to run the app!
+
 Functionality 
 - In this app you can currently log in and make some posts about music. For the log in, you can either make a new account with the form or use google authentication. Once logged in, you can make your own posts or like others posts. Next, we have a user profile page that can be toggled with the profile icon on the top header to the right. There will be more on this page to come later.
+
 Known Problems
 - One issue that we have right now is that even if you aren't the creator, you can delete and edit others posts. You should only be able to do that to your own posts and we will be addressing that right after the MVP.
