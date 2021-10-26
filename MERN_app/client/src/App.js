@@ -9,6 +9,7 @@ import memories from "./images/memories.png";
 import useStyles from "./styles";
 import PictureUploader from "./components/User-profile/PictureUploader";
 import { Route, Switch, Router } from "react-router";
+import musicDiary from "./components/User-profile/musicDiary";
 
 const App = () => {
   const classes = useStyles();
@@ -26,7 +27,7 @@ const App = () => {
           height="60"
         />
       </AppBar>
-      <Container className={classes.user}>TEST</Container>
+      <Container className={classes.user}></Container>
       <Grow in>
         <Container>
           <Grid

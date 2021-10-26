@@ -9,9 +9,8 @@ export default class PlaylistPreview extends React.Component {
     }
     render() {
         return (
-          <div class="playlist" onClick={this.playlistClicked}>
-              
-          </div>
+          <div class="playlist" onClick={this.playlistClicked}></div>
+          
         );
       }
 }

@@ -37,6 +37,8 @@ const Form = () => {
         <Typography variant="body2"> 34 groups contributed to</Typography>
         <br />
         <Typography variant="body1">Most active playlists</Typography>
+        <PlaylistPreview />
+        
         <form2 className={classes.form2}>
           <PlaylistPreview className={classes.fileInput}></PlaylistPreview>
           <PlaylistPreview className={classes.fileInput}></PlaylistPreview>
