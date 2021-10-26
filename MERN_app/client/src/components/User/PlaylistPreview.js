@@ -2,11 +2,13 @@ import React from "react";
 import PictureUploader from "./PictureUploader";
 import styles from "./PlaylistPreview.css";
 
-export default class PlaylistPreview extends React.Component {
-  playlistClicked() {
-    console.log("hello world");
-  }
-  render() {
-    return <div class="playlist" onClick={this.playlistClicked}></div>;
-  }
-}
+const PlaylistPreview = (props) => {
+  return (
+    <div class="playlist">
+      <img src={props.imagesource} class="cover" />
+      <p class="title">{props.playlistname}</p>
+    </div>
+  );
+};
+
+export default PlaylistPreview;

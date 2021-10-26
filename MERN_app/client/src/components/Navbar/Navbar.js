@@ -3,8 +3,8 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppBar, Avatar, Button, Typography, Toolbar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
-import memories from "../../images/memories.png";
-import avataricon from "../../images/avataricon.jpg"
+import musicIcon from "../../images/musicIcon.png";
+import avataricon from "../../images/avataricon.jpg";
 const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -33,12 +33,12 @@ const Navbar = () => {
           variant="h2"
           align="center"
         >
-          Memories
+          Music Blog
         </Typography>
         <img
           className={classes.image}
-          src={memories}
-          alt="memories"
+          src={musicIcon}
+          alt="musicIcon"
           height="60"
         />
       </div>
@@ -74,7 +74,12 @@ const Navbar = () => {
             Sign In
           </Button>
         )}
-        <Avatar src={avataricon} component={Link} to="/user">
+        <Avatar
+          src={avataricon}
+          variant="contained"
+          component={Link}
+          to="/user"
+        >
           User Profile
         </Avatar>
       </Toolbar>
