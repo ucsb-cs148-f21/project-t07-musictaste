@@ -1,0 +1,13 @@
+label {
+  cursor: pointer;
+  color: white;
+  padding: 8px;
+  background-color: #e7e7e7;
+  color: black;
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
