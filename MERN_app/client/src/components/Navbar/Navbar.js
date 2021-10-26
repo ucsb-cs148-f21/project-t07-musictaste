@@ -4,6 +4,7 @@ import { AppBar, Avatar, Button, Typography, Toolbar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import memories from "../../images/memories.png";
+import avataricon from "../../images/avataricon.jpg"
 const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -73,6 +74,9 @@ const Navbar = () => {
             Sign In
           </Button>
         )}
+        <Avatar src={avataricon} component={Link} to="/user">
+          User Profile
+        </Avatar>
       </Toolbar>
     </AppBar>
   );
