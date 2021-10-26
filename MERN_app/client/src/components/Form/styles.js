@@ -8,16 +8,21 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    //border: "5px solid red",
+    backgroundColor: "#bed1d8",
+    marginTop: "15%",
+    minWidth: "20em",
+    float: "right",
   },
   form: {
     display: "block",
     flexWrap: "wrap",
     justifyContent: "center",
+    textAlign: "center",
   },
   fileInput: {
     width: "97%",
     margin: "10px 0",
+    display: "block",
   },
   buttonSubmit: {
     marginBottom: 10,
@@ -25,7 +30,10 @@ export default makeStyles((theme) => ({
   form2: {
     display: "inline-block",
     flexWrap: "wrap",
+    marginTop: "5%",
+    marginBottom: "0%",
     justifyContent: "center",
-    //border: "5px solid red"
+    marginRight: "0%",
+    textAlign: "center",
   },
 }));
