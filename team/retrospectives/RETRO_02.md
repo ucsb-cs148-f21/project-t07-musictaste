@@ -15,7 +15,9 @@ Team: Brandon Son [], Karanina (Laszlo) Zim [X], Karanveer (KB) Benipal [], Kevi
 
 Brandon: roommate contact traced, so waiting 
 
-Laszlo:
+Laszlo: brainstorming upcoming action items:
+- figure out deployment
+- standardizing styles
 
 KB: not feeling well
 
