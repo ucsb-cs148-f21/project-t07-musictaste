@@ -21,7 +21,7 @@ Laszlo: brainstorming upcoming action items:
 
 KB: not feeling well
 
-Kevin:
+Kevin: alarm didn't work
 
 **Retro Template:**
 
