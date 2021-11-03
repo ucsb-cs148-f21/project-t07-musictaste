@@ -30,5 +30,8 @@ Backend pair discussion:
     - "as a user I want to log into my user profile and have recent changes be reflected (no hard code) so that my user profile remains up to date"
 
 Misc.
+- use Jest for unit testing (great for React)
+- repurpose groups around features (because there needs to be a lot of collaboration and communication between frontend and backend for each feature, would overcomplicate and draw out the process)
+        - though if issues come up specifically for frontend or backend, the originally designated pairs can look into it
 - "as a user I don't want other users to be able to delete my diary posts so that I can have control over my posts and information"
 - "as a user I want to be able to comment on other's diary posts and have others comment on my diary posts so that I can interact with other users"
