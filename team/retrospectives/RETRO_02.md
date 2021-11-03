@@ -4,7 +4,7 @@ Mentor: Alan, Nagarjun
 
 Meeting Time: Lab 05, Friday 29 Oct 2021
 
-Type of meeting: Retr
+Type of meeting: Retro
 
 Team: Brandon Son [], Karanina (Laszlo) Zim [X], Karanveer (KB) Benipal [], Kevin Tran [] (**see below for absence notes)
 
@@ -18,8 +18,8 @@ Brandon: roommate contact traced, so waiting
 
 Laszlo: 
 - brainstorming upcoming action items:
--     figure out deployment
--     standardizing styles
+    - figure out deployment
+    - standardizing styles
 - resolved local git conflicts (hopefully i think)
 
 KB: not feeling well
@@ -29,8 +29,10 @@ Kevin: alarm didn't work
 **Retro Template:**
 
 _start_:
+- research ideas BEFORE meeting, not an efficient use of time to flesh out fledgling ideas DURING meeting times
+- pairworking (frontend and backend pairs)
 
 _stop_:
 
 _continue_:
-- meeting up in person to work on the project together
+- meeting up in person to work on the project together -> designate a weekly meeting, Mondays beginning next week
