@@ -43,6 +43,7 @@ Misc.
 3. [Testing: Develop unit testing for user profile page] [Last week's lab] As a product developer I want to have a built-in unit test using a React testing framework for the user profile page so that I can quickly, easily, and thoroughly verify that the front-end components of the user profile page are working correctly.
 4. [Testing: Develop higher level testing] [This week's lab] As a product developer I want to have acceptance criteria tests to refer to when reviewing product deliverables so that I can quickly, easily, and thoroughly verify that the user experience adheres to the corresponding user stories.
 5. [Funtionality: Connect user database to user profile page (replace hard code)] As a typical user I want to log into my user profile and see the user profile page accurately reflect recent changes in my profile so that my user profile remains up to date.
-6. [Bug fix: blog post privileges] As a typical user I don't want other users to be able to delete my diary posts so that I can retain control over my posts and information.
-7. [Functionality: blog post comments] As a typical user I want to be able to comment on others' diary posts and have others comment on my diary posts so that I can interact with other web app users.
-8. [Functionality: music dump] tbd later
+6. [Functionality: Connect blog post music field to Spotify API] As a typical user creating a diary post I want to be able to search for and select the music I am basing my post around from Spotify's collection so that it seems more official and standardized (idk).
+7. [Bug fix: blog post privileges] As a typical user I don't want other users to be able to delete my diary posts so that I can retain control over my posts and information.
+8. [Functionality: blog post comments] As a typical user I want to be able to comment on others' diary posts and have others comment on my diary posts so that I can interact with other web app users.
+9. [Functionality: music dump] tbd later
