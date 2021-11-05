@@ -6,17 +6,20 @@ import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/user.js";
 const app = express();
 dotenv.config();
-// app.use(bodyParser.json({ limit: "30mb", extended: true }));
-// app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-// =======
+
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);
-// const CONNECTION_URL =
-//   "mongodb+srv://javascriptmaster:javascriptmaster123@cluster0.b5xa9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+app.get('/', (req,res) => {
+  res.send('Hello to Music Taste API!');
+});
+
 const PORT = process.env.PORT || 3001;
+
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
