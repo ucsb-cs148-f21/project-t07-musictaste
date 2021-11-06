@@ -23,7 +23,7 @@ export default class PictureUploader extends React.Component {
 
   renderPreview() {
     if (this.state.src) {
-      return <img src={this.state.src} height="150" width="200" alt="Album Cover" />;
+      return <img src={this.state.src} height="150" width="200" />;
     }
   }
 
