@@ -29,15 +29,17 @@ export const createProfile = async(req, res) => {
     }    
 };
 
-export const updateProfile = async (req, res) => {
+export const changeUsername = async (req, res) => {
     const { id } = req.params;
     const profile = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
         return res.status(404).send("No user profile with that id");
-    const updatedProfile = await UserProfile.findByIdAndUpdate(id, proifle, {
+    const updatedProfile = await UserProfile.findByIdAndUpdate(id, profile, {
         new: true,
+        username: req.username,
     });
     res.json(updatedProfile);
 };
+
 
 export default router;

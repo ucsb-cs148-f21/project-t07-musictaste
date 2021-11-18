@@ -3,11 +3,12 @@ import auth from "../middleware/auth.js";
 import {
     getProfile,
     createProfile,
-    updateProfile,
+    updateUsername,
 } from "../Controllers/userProfile.js";
 const router = express.Router();
 
 router.get("/", getProfile);
-router.post("/", auth);
+router.post("/", auth, createProfile);
+router.patch("/username/:username", auth, updateUsername);
 
 export default router;
