@@ -9,9 +9,11 @@ export default makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     backgroundColor: "#bed1d8",
-    marginTop: "15%",
-    minWidth: "20em",
+    // backgroundColor: "#ffff00",
+    // marginTop: "15%",
+    // minWidth: "20em",
     float: "right",
+    width: "85%",
   },
   form: {
     display: "block",
@@ -26,6 +28,12 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+    backgroundColor: "#92a5c9",
+    color: "#2e3238",
+  },
+  buttonClear: {
+    backgroundColor: "#abb2bb",
+    color: "#2e3238",
   },
   form2: {
     display: "inline-block",
@@ -36,4 +44,7 @@ export default makeStyles((theme) => ({
     marginRight: "0%",
     textAlign: "center",
   },
+  // temporary: {
+  //   fontFamily: theme.typography.fontFamily.openSans,
+  // }
 }));

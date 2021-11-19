@@ -67,7 +67,7 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
+        <Typography variant="h6" className="temporary">
           {currentId ? "Editing" : "Creating"} a Music Blog
         </Typography>
         <TextField
@@ -110,7 +110,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button
           className={classes.buttonSubmit}
           variant="contained"
-          color="primary"
+          // color="primary"
           size="large"
           type="submit"
           fullWidth
@@ -118,6 +118,7 @@ const Form = ({ currentId, setCurrentId }) => {
           Submit
         </Button>
         <Button
+          className={classes.buttonClear}
           variant="contained"
           color="secondary"
           size="small"
