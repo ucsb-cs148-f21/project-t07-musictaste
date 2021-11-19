@@ -15,6 +15,7 @@ const FormUserProfile = () => {
     selectedFile: "",
   });
   const classes = useStyles();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,14 +31,14 @@ const FormUserProfile = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h4">@brandonwrson</Typography>
-        <br />
+        <Typography variant="h4">{user.result.name}</Typography>
+        <br /> <br />
         <PictureUploader />
         <br />
-        <Typography variant="body1"> 34 groups contributed to</Typography>
+        {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
         <br />
-        <Typography variant="h5">Most active playlists</Typography>
-        <PlaylistPreview />
+        <Typography variant="h5">Most listened artists</Typography>
+        {/* <PlaylistPreview /> */}
 
         <form2 className={classes.form2}>
           <PlaylistPreview
