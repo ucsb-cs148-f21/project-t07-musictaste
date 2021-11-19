@@ -28,7 +28,7 @@ const App = () => {
           />
           <Route path="/posts/search" exact component={PostsHome} />
           <Route path="/posts/:id" component={PostDetails} />
-          <Route path="/user" exact component={User}></Route>
+          <Route path="/users/:id" exact component={User}></Route>
           <Route path="/musicPlaylist" exact component={musicPlaylist} />
           <Route path="/musicPlaylists" exact component={musicPlaylists} />
         </Switch>

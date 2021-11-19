@@ -64,11 +64,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const MusicPlaylist = () => {
+const MusicPlaylist = (props) => {
   const classes = useStyles();
   const [pageSize, setPageSize] = useState(5);
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 400, width: props.width }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -77,9 +77,9 @@ const MusicPlaylist = () => {
         rowsPerPageOptions={[5, 10, 20]}
         pagination
       />
-      <Typography variant="h1" color="text.secondary" align="center">
+      {/* <Typography variant="h1" color="text.secondary" align="center">
         FlashBack
-      </Typography>
+      </Typography> */}
       <Grid
         className={classes.mainContainer}
         container
@@ -88,9 +88,9 @@ const MusicPlaylist = () => {
       >
         {Array.from(Array(12)).map((_, index) => (
           <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
-            <Card className={classes.card} raised elevation={6}>
+            {/* <Card className={classes.card} raised elevation={6}>
               <CardMedia className={classes.media} image={memories} />
-            </Card>
+            </Card> */}
             {/* <Item> */}
             {/* <img src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" /> */}
             {/* </Item> */}
