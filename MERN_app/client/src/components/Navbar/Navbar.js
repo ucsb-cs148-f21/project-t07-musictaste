@@ -19,6 +19,10 @@ const Navbar = () => {
 
     setUser(null);
   };
+
+  const blog = () => {
+    history.push("/posts");
+  };
   useEffect(() => {
     const token = user?.token;
     setUser(JSON.parse(localStorage.getItem("profile")));
@@ -33,7 +37,7 @@ const Navbar = () => {
           variant="h2"
           align="center"
         >
-          Music Blog
+          Music Playlist
         </Typography>
         <img
           className={classes.image}
@@ -42,6 +46,15 @@ const Navbar = () => {
           height="60"
         />
       </div>
+      <Button
+        variant="contained"
+        className={classes.logout}
+        color="secondary"
+        onClick={blog}
+      >
+        Blogs
+      </Button>
+
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
