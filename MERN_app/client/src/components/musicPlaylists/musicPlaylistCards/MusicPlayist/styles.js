@@ -1,12 +1,24 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles({
-  media: {
-    height: 0,
-    paddingTop: "56.25%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    backgroundBlendMode: "darken",
+  mainContainer: {
+    borderRadius: 15,
+    margin: "30px 0",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "10px 50px",
   },
+  image: {
+    marginLeft: "15px",
+  },
+  // media: {
+  //   height: 0,
+  //   paddingTop: "56.25%",
+  //   backgroundColor: "rgba(0, 0, 0, 0.5)",
+  //   backgroundBlendMode: "darken",
+  // },
   border: {
     border: "solid",
   },
@@ -14,12 +26,13 @@ export default makeStyles({
     height: "100%",
   },
   card: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    borderRadius: "15px",
-    height: "100%",
-    position: "relative",
+    width: 300,
+    margin: "auto",
+  },
+  media: {
+    height: 300,
+    width: "100%",
+    objectFit: "cover",
   },
   overlay: {
     position: "absolute",
