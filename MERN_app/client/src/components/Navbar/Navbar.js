@@ -19,8 +19,10 @@ const Navbar = () => {
 
     setUser(null);
   };
-
-  const blog = () => {
+  
+  const openUser = () => history.push(`/users/${user?.result?._id}`);
+  // Need to handle when user is null -> lead to 404 error 
+  const blog = () => {  
     history.push("/posts");
   };
   useEffect(() => {
@@ -90,8 +92,7 @@ const Navbar = () => {
         <Avatar
           src={avataricon}
           variant="contained"
-          component={Link}
-          to="/user"
+          onClick = {openUser}
         >
           User Profile
         </Avatar>
