@@ -68,6 +68,7 @@ const MusicPlaylist = (props) => {
   const classes = useStyles();
   const [pageSize, setPageSize] = useState(5);
   return (
+    <Paper>
     <div style={{ height: 400, width: props.width }}>
       <DataGrid
         rows={rows}
@@ -112,6 +113,7 @@ const MusicPlaylist = (props) => {
         />
       </Stack> */}
     </div>
+    </Paper>
   );
 };
 

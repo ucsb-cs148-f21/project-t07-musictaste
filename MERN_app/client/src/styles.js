@@ -23,4 +23,5 @@ export default makeStyles((theme) => ({
     display: "in-line",
     border: "5px solid red",
   },
+}
 }));
