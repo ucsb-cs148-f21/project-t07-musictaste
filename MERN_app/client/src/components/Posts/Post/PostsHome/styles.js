@@ -4,13 +4,16 @@ export default makeStyles((theme) => ({
   appBarSearch: {
     borderRadius: 4,
     marginBottom: "1rem",
-    display: "flex",
+    display: "inline-flex",
     padding: "16px",
   },
   pagination: {
     borderRadius: 4,
     marginTop: "1rem",
     padding: "16px",
+    display: "inline-block",
+    backgroundColor: "#e8f4f8",
+    // color: "#466060",
   },
   gridContainer: {
     [theme.breakpoints.down("xs")]: {
