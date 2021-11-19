@@ -20,6 +20,7 @@ Now you need to set up a backend server which will communicate with the database
 
 From your backend terminal (which should be at project-t07-musictaste/MERN_app/server/):
 - Log in to heroku using the Heroku CLI with ```heroku login```.
+- (You may need to run ```git init``` at this step if the next step throws errors)
 - Run ```heroku git:remote -a <app-name>```, replacing \<app-name\> with the name of your heroku app.
 - Run:
   ```
