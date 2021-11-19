@@ -62,10 +62,13 @@ const Home = () => {
           alignItems="stretch"
           spacing={3}
         >
-          <Grid item xs={12} sm={6} md={9}>
+          <Grid item xs={12} md={8} container direction={"column"}>
             <Posts setCurrentId={setCurrentId} />
+            <Paper elevation={6} className={classes.pagination} >
+              <Pagination page={page} sx={{ display: 'block' }} />
+            </Paper>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} md={4}>
             {/* <AppBar
               className={classes.appBarSearch}
               position="static"
@@ -98,9 +101,6 @@ const Home = () => {
               </Button>
             </AppBar> */}
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            <Paper elevation={6} className={classes.pagination}>
-              <Pagination page={page} />
-            </Paper>
           </Grid>
         </Grid>
       </Container>

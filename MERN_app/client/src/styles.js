@@ -19,5 +19,8 @@ export default makeStyles((theme) => ({
     mainContainer: {
       flexDirection: "column-reverse",
     },
+  user: {
+    display: "in-line",
+    border: "5px solid red",
   },
 }));

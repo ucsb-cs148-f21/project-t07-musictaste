@@ -30,7 +30,7 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
   return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
+    <AppBar className={classes.appBar} position="static" color="inherit" elevation="5" square={false}>
       <div className={classes.brandContainer}>
         <Typography
           component={Link}
@@ -50,8 +50,8 @@ const Navbar = () => {
       </div>
       <Button
         variant="contained"
-        className={classes.logout}
-        color="secondary"
+        className={classes.buttons}
+        // color="secondary"
         onClick={blog}
       >
         Blogs
@@ -72,8 +72,8 @@ const Navbar = () => {
             </Typography>
             <Button
               variant="contained"
-              className={classes.logout}
-              color="secondary"
+              className={classes.buttons}
+              // color="secondary"
               onClick={logout}
             >
               logout
@@ -84,7 +84,8 @@ const Navbar = () => {
             component={Link}
             to="/auth"
             variant="contained"
-            color="primary"
+            className={classes.buttons}
+            // color="primary"
           >
             Sign In
           </Button>
