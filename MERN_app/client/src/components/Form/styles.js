@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(2),
     backgroundColor: "#bed1d8",
     // backgroundColor: "#ffff00",
-    marginTop: "15%",
+    // marginTop: "15%",
     // minWidth: "20em",
     float: "right",
     width: "85%",

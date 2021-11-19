@@ -60,13 +60,13 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
-            <Avatar
+            {/* <Avatar
               className={classes.purple}
               alt={user.result.name}
               src={user.result.imageUrl}
             >
               {user.result.name.charAt(0)}
-            </Avatar>
+            </Avatar> */}
             <Typography className={classes.userName} variant="h6">
               {user.result.name}
             </Typography>

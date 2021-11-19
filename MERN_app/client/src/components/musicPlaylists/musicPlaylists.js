@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import useStyles from "./stlyes";
+import useStyles from "./styles";
 import MusicPlaylist from "./musicPlaylistCards/MusicPlayist/musicPlaylist";
 import MusicPlaylistCards from "./musicPlaylistCards/musicPlaylistCard";
 const MusicPlaylists = () => {
