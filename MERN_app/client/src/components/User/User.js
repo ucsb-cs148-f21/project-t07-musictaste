@@ -5,6 +5,7 @@ import React from "react";
 import FormUserProfile from "./FormUserProfile";
 // import musicDiary from "./musicDiary";
 import PictureUploader from "./PictureUploader";
+import MusicPlaylist from "../musicPlaylists/musicPlaylistCards/MusicPlayist/musicPlaylist";
 import PlaylistPreview from "./PlaylistPreview";
 
 const User = () => (
@@ -16,12 +17,10 @@ const User = () => (
   //}, [currentId, dispatch]);
   // return <div>user</div>;
   <Container>
-    <Grid>
-      <FormUserProfile />
-      {/* <musicDiary/> */}
-      <PictureUploader />
-      <PlaylistPreview />
-    </Grid>
+    <div class="blocks">
+      <MusicPlaylist width="50%" />
+      <FormUserProfile /> 
+    </div >
   </Container>
 );
 

@@ -8,6 +8,7 @@ export default class PictureUploader extends React.Component {
     this.state = {
       picture: false,
       src: false,
+      title: "Upload Profile Picture"
     };
   }
 
@@ -18,6 +19,7 @@ export default class PictureUploader extends React.Component {
     this.setState({
       picture: picture,
       src: src,
+      title: "Change Profile Picture"
     });
   }
 
@@ -48,7 +50,7 @@ export default class PictureUploader extends React.Component {
   render() {
     return (
       <div>
-        <label for="upload-photo">Upload Profile Picture</label>
+        <label for="upload-photo">{this.state.title}</label>
         <input
           type="file"
           name="photo"
@@ -59,6 +61,7 @@ export default class PictureUploader extends React.Component {
           type="file"
           onChange={this.handlePictureSelected.bind(this)}
         /> */}
+        <br />
         <br />
         <div>
           {this.renderPreview()}
