@@ -1,6 +1,6 @@
 # Deployment Instructions
 ## Getting Started
-- Begin by cloning the repository to your local machine
+- Begin by cloning the repository to your local machine using ```git clone https://github.com/ucsb-cs148-f21/project-t07-musictaste.git```
 - Open two terminal windows: one will be used to start the backend, the other will be used to start the frontend.
 - In one terminal, navigate to project-t07-musictaste/MERN_app/server/, this will be your backend terminal. See the Backend section for instructions on starting the backend from here.
 - In the other terminal, navigate to project-t07-musictaste/MERN_app/client/, this will be your frontend terminal. See the Frontend section for instructions on starting the frontend from here.
