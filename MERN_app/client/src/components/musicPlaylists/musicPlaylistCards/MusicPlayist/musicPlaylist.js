@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import useStyles from "./styles";
 import { CardMedia } from "@mui/material";
 import memories from "../../../../images/memories.png";
+import Alert from "@mui/material/Alert";
 
 import { Pagination, PaginationItem } from "@material-ui/lab";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -13,10 +14,10 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 const columns = [
   { field: "id", headerName: "ID", width: 150 },
-  { field: "artist", headerName: "Artist", width: 250 },
-  { field: "title", headerName: "Title", width: 250 },
-  { field: "duration", headerName: "Duration", width: 300 },
-  { field: "genre", headerName: "Genre", width: 200 },
+  { field: "artist", headerName: "Artist", width: 250, editable: true },
+  { field: "title", headerName: "Title", width: 250, editable: true },
+  { field: "duration", headerName: "Duration", width: 300, editable: true },
+  { field: "genre", headerName: "Genre", width: 200, editable: true },
 ];
 
 const rows = [
@@ -55,6 +56,76 @@ const rows = [
     duration: "6:13",
     genre: "FUNK",
   },
+  {
+    id: 6,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 7,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 8,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 9,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 10,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 11,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 12,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 13,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 14,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
+  {
+    id: 15,
+    artist: "",
+    title: "",
+    duration: "",
+    genre: "",
+  },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -67,6 +138,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const MusicPlaylist = () => {
   const classes = useStyles();
   const [pageSize, setPageSize] = useState(5);
+  const [editRowsModel, setEditRowsModel] = useState({});
+  const handleEditRowsModelChange = React.useCallback((model) => {
+    setEditRowsModel(model);
+  }, []);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -76,6 +151,8 @@ const MusicPlaylist = () => {
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
         rowsPerPageOptions={[5, 10, 20]}
         pagination
+        editRowsModel={editRowsModel}
+        onEditRowsModelChange={handleEditRowsModelChange}
       />
       <Typography variant="h1" color="text.secondary" align="center">
         FlashBack
