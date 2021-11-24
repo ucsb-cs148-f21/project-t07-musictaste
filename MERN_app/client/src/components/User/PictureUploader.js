@@ -1,74 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import $ from "jquery";
 import styles from "./PictureUploader.css";
-export default class PictureUploader extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      picture: false,
-      src: false,
-      title: "Upload Profile Picture"
-    };
-  }
+import {updateUser, getUser} from "../../actions/userProfile";
 
-  handlePictureSelected(event) {
-    var picture = event.target.files[0];
-    var src = URL.createObjectURL(picture);
+const PictureUploader = ({ id, pic }) => {
+  const dispatch = useDispatch();
+  const [picData, setPicData] = useState({
+    profilePicture: "",
+    title: "Upload Profile Picture",
+  });
+  useEffect(() => {
+    dispatch(getUser(id));
+  }, [id, dispatch]);
+  
+  const user = useSelector((state) => state.users);
 
-    this.setState({
-      picture: picture,
-      src: src,
+  const handlePictureSelected = async (event) => {
+    var picture = URL.createObjectURL(event.target.files[0]);
+    setPicData({
+      profilePicture: picture,
       title: "Change Profile Picture"
-    });
+    })
+    console.log(picData);
+    console.log(user);
+    dispatch(updateUser(id, {...picData, profilePicture:picture}));
   }
-
-  renderPreview() {
-    if (this.state.src) {
-      return <img src={this.state.src} height="150" width="200" />;
-    }
+  const clearPhoto = (event) => {
+    setPicData({
+      profilePicture: "",
+      title: "Upload Profile Picture"
+    })
   }
-
-  // upload() {
-  //   var formData = new FormData();
-
-  //   formData.append("file", this.state.picture);
-
-  //   $.ajax({
-  //     url: "/some/api/endpoint",
-  //     method: "POST",
-  //     data: formData,
-  //     cache: false,
-  //     contentType: false,
-  //     processData: false,
-  //     success: function (response) {
-  //       // Code to handle a succesful upload
-  //     },
-  //   });
-  // }
-
-  render() {
-    return (
-      <div>
-        <label for="upload-photo">{this.state.title}</label>
+  return (
+    <div>
+        <label for="upload-photo">{picData.title}</label>
         <input
           type="file"
           name="photo"
-          onChange={this.handlePictureSelected.bind(this)}
+          onChange={handlePictureSelected}
           id="upload-photo"
         />
-        {/* <input
-          type="file"
-          onChange={this.handlePictureSelected.bind(this)}
-        /> */}
         <br />
         <br />
-        <div>
-          {this.renderPreview()}
-          {/* {this.upload.bind(this)} */}
-        </div>
+        {picData.profilePicture && (
+          <div>
+          <img alt="not fount" width={"250px"} src={picData.profilePicture} />
+          <br />
+          <button onClick={clearPhoto}>Remove</button>
+          </div>
+        )}
         <hr />
       </div>
-    );
-  }
+  )
 }
+
+export default PictureUploader;

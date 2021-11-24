@@ -6,7 +6,9 @@ import useStyles from "../Form/styles";
 import { createPost } from "../../actions/posts";
 import PictureUploader from "./PictureUploader";
 import PlaylistPreview from "./PlaylistPreview";
+import { getUser } from "../../actions/userProfile"
 const FormUserProfile = () => {
+  const dispatch = useDispatch();
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -16,7 +18,7 @@ const FormUserProfile = () => {
   });
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const dispatch = useDispatch();
+  console.log(dispatch(getUser(user.result.id)));
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPost(postData));
@@ -33,7 +35,7 @@ const FormUserProfile = () => {
       >
         <Typography variant="h4">{user.result.name}</Typography>
         <br /> <br />
-        <PictureUploader />
+        <PictureUploader id={user?.result?._id} pic={user?.result?.profilePicture}/>
         <br />
         {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
         <br />
