@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -11,6 +11,8 @@ import {
 } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
+import { useSelector, useDispatch } from "react-redux";
 import useStyles from "./styles";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
@@ -27,15 +29,16 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const MusicPlaylistCards = () => {
+const MusicPlaylistCards = ({ musicplaylist, setCurrentId }) => {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const openPost = (e) => {
-    history.push(`/musicPlaylist`);
+    history.push(`/musicPlaylists/${musicplaylist._id}`);
   };
   return (
     <Card className={classes.card}>
@@ -45,16 +48,18 @@ const MusicPlaylistCards = () => {
         className={classes.cardAction}
         onClick={openPost}
       >
-        <CardHeader title="Test Music Playlist" subheader="November 17, 2021" />
+        <CardHeader
+          title={musicplaylist.title}
+          subheader={moment(musicplaylist.createdAt).fromNow()}
+        />
         <CardMedia
-          component="img"
-          height="194"
-          image="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+          className={classes.media}
+          image={musicplaylist.selectedMainFile}
           alt="Playlist"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            This is our test music Playlist.
+            {musicplaylist.message}
           </Typography>
         </CardContent>
       </ButtonBase>
@@ -76,12 +81,8 @@ const MusicPlaylistCards = () => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Creators:</Typography>
-          <Typography paragraph>
-            I'm going to have to make a list of the creators here and possibly a
-            link to their profiles from here. That is going to be difficult and
-            I'm hoping someone can take this on.
-          </Typography>
+          <Typography paragraph>Creator: {musicplaylist.name}</Typography>
+          <Typography paragraph>Contributors:</Typography>
         </CardContent>
       </Collapse>
     </Card>

@@ -20,6 +20,7 @@ export const getPosts = (page) => async (dispatch) => {
     dispatch({ type: FETCH_ALL, payload: data });
 
     dispatch({ type: END_LOADING });
+    console.log("Get Posts was called");
   } catch (error) {
     console.log("Error Here 1");
     console.log(error);
@@ -40,6 +41,7 @@ export const createPost = (post) => async (dispatch) => {
     dispatch({ type: START_LOADING });
     const { data } = await api.createPost(post);
     dispatch({ type: CREATE, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log("Here is the error");
     console.log(error);
