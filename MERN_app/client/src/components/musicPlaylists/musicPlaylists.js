@@ -1,19 +1,46 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  CircularProgress,
+  Grow,
+  Container,
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import useStyles from "./styles";
-import MusicPlaylist from "./musicPlaylistCards/MusicPlayist/musicPlaylist";
 import MusicPlaylistCards from "./musicPlaylistCards/musicPlaylistCard";
-const MusicPlaylists = () => {
+
+const MusicPlaylists = ({ setCurrentId }) => {
+  const musicplaylists = useSelector((state) => state.musicPlaylists);
   const classes = useStyles();
+  const history = useHistory();
+  const openForm = () => history.push(`/musicPlaylists/Form`);
+  // console.log(musicplaylists);
+
   return (
-    <Grid
-      className={classes.container}
-      container
-      alignItems="stretch"
-      spacing={3}
-    >
-      <MusicPlaylistCards />
-    </Grid>
+    <Grow in>
+      <Container>
+        <Grid
+          className={classes.container}
+          container
+          alignItems="stretch"
+          spacing={3}
+        >
+          {musicplaylists.map((musicplaylist) => (
+            <Grid key={musicplaylist._id} item xs={12} md={6}>
+              <MusicPlaylistCards
+                musicplaylist={musicplaylist}
+                setCurrentId={setCurrentId}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        <Button variant="contained" onClick={openForm}>
+          FORM
+        </Button>
+      </Container>
+    </Grow>
   );
 };
 

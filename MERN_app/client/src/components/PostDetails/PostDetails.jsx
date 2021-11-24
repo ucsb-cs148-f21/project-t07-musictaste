@@ -26,6 +26,7 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
+  console.log(post);
 
   //   useEffect(() => {
   //     if (post) {

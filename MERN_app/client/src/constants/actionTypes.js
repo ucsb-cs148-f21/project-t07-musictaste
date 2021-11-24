@@ -1,7 +1,11 @@
+export const ADD_SONG = "ADD_SONG";
+export const GET_SONGS = "GET_SONGS";
 export const CREATE = "CREATE";
+export const CREATE_PLAYLIST = "CREATE_PLAYLIST";
 export const UPDATE = "UPDATE";
 export const DELETE = "DELETE";
 export const FETCH_ALL = "FETCH_ALL";
+export const FETCH_ALL_PLAYLISTS = "FETCH_ALL_PLAYLISTS";
 export const FETCH_POST = "FETCH_POST";
 export const FETCH_BY_SEARCH = "FETCH_BY_SEARCH";
 export const START_LOADING = "START_LOADING";
