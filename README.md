@@ -57,3 +57,7 @@ Functionality
 
 Known Problems
 - One issue that we have right now is that even if you aren't the creator, you can delete and edit others posts. You should only be able to do that to your own posts and we will be addressing that right after the MVP.
+
+# Deployment
+Deployment Instructions: https://github.com/ucsb-cs148-f21/project-t07-musictaste/blob/main/team/docs/DEPLOY.md
+Live Deployment: https://musicplaylists.netlify.app/
