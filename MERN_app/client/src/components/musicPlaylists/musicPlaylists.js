@@ -15,8 +15,8 @@ const MusicPlaylists = ({ setCurrentId }) => {
   const musicplaylists = useSelector((state) => state.musicPlaylists);
   const classes = useStyles();
   const history = useHistory();
-  const openForm = () => history.push(`/musicPlaylists/Form`);
-  // console.log(musicplaylists);
+  const openForm = () => history.push(`/CreateMusicPlaylist/Form`);
+  console.log(musicplaylists);
 
   return (
     <Grow in>

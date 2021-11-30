@@ -75,7 +75,7 @@ const FormCreateSonglist = ({ id }) => {
           {(popupState) => (
             <React.Fragment>
               <IconButton
-                size="large"
+                size="medium"
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"

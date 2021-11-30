@@ -6,10 +6,12 @@ import useStyles from "./styles";
 import { CardMedia } from "@mui/material";
 import memories from "../../../../images/memories.png";
 import FormCreateSonglist from "../../../Form/FormCreateSonglist";
+import FormAddPicture from "../../../Form/FormAddPicture";
 import { useSelector, useDispatch } from "react-redux";
+import CommentSection from "./CommentSection";
 import { useParams, useHistory } from "react-router-dom";
 import { Pagination, PaginationItem } from "@material-ui/lab";
-import { getSonglists } from "../../../../actions/musicPlaylist";
+import { getPlaylist, getSonglists } from "../../../../actions/musicPlaylist";
 
 const columns = [
   // { field: "id", headerName: "ID", width: 150 },
@@ -48,7 +50,21 @@ const MusicPlaylist = (props) => {
   useEffect(() => {
     dispatch(getSonglists(id));
   }, [id, dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getPlaylist(id));
+  // }, [id, dispatch]);
   const songlists = useSelector((state) => state.songlist);
+
+  const playlist = useSelector((state) =>
+    id ? state.musicPlaylists.find((p) => p._id === id) : null
+  );
+
+  const gallery = playlist.selectedFiles.map((pics) => {
+    return {
+      picture: pics,
+    };
+  });
 
   const rows1 = songlists.map((songlist) => {
     return {
@@ -74,8 +90,9 @@ const MusicPlaylist = (props) => {
           editRowsModel={editRowsModel}
           onEditRowsModelChange={handleEditRowsModelChange}
         />
-
+        <CommentSection playlist={playlist} />
         <FormCreateSonglist id={id} />
+        <FormAddPicture id={id} />
         {/* <Typography variant="h1" color="text.secondary" align="center">
         FlashBack
       </Typography> */}
@@ -85,14 +102,15 @@ const MusicPlaylist = (props) => {
           spacing={3}
           alignItems="stretch"
         >
-          {Array.from(Array(12)).map((_, index) => (
+          {Array.from(gallery).map((_, index) => (
             <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
               <Card className={classes.card} raised elevation={6}>
-                <CardMedia className={classes.media} image={memories} />
+                <CardMedia className={classes.media} image={_.picture} />
               </Card>
+              {console.log(_)}
               {/* <Item>
             <img src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" />
-           </Item> */}
+          </Item> */}
             </Grid>
           ))}
         </Grid>

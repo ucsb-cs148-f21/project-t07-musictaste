@@ -21,10 +21,21 @@ export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const commentPost = (value, id) =>
+  API.post(`/posts/${id}/commentPost`, { value });
 
 export const createPlaylist = (newPlaylist) =>
   API.post("/musicPlaylists", newPlaylist);
 export const fetchPlaylists = () => API.get(`/musicPlaylists`);
+export const fetchPlaylist = (id) => API.get(`/musicPlaylists/${id}/gallery`);
+export const addToGallery = (id, picture) =>
+  API.patch(`/musicPlaylists/${id}`, picture);
+
+export const deletePlaylist = (id) => API.delete(`/musicPlaylists/${id}`);
+export const likePlaylist = (id) =>
+  API.patch(`/musicPlaylists/${id}/likePlaylist`);
+export const commentPlaylist = (value, id) =>
+  API.post(`/musicPlaylists/${id}/commentPlaylist`, { value });
 
 export const addSong = (id, addedsong) =>
   API.post(`/musicPlaylists/${id}`, addedsong);
