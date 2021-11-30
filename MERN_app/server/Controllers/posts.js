@@ -40,9 +40,9 @@ export const getPosts = async (req, res) => {
 export const getPostsBySearch = async (req, res) => {
   const { searchQuery, tags } = req.query;
   try {
-    const title = new RegExp(searchQuery, "i");
+    const title = new RegExp(searchQuery);
     const posts = await PostMessage.find({
-      $or: [{ title }, { tags: { $in: tags.split(",") } }],
+      $or: [{ name: title }, { tags: { $in: tags.split(",") } }],
     });
     res.json({ data: posts });
   } catch (error) {
@@ -84,6 +84,7 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
   // const { id: _id } = req.params;
   const { id } = req.params;
+  console.log(id);
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send("No post with that id");
 
@@ -114,4 +115,17 @@ export const likePost = async (req, res) => {
   res.status(200).json(updatedPost);
 };
 
+export const commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  const post = await PostMessage.findById(id);
+  post.comments.push(value);
+
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+
+  res.status(200).json(updatedPost);
+};
 export default router;

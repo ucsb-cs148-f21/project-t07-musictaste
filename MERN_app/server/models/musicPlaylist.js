@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const playListSchema = mongoose.Schema({
   title: String,
   message: String,
@@ -15,6 +14,10 @@ const playListSchema = mongoose.Schema({
     default: [],
   },
   likes: {
+    type: [String],
+    default: [],
+  },
+  comments: {
     type: [String],
     default: [],
   },
