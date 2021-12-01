@@ -15,7 +15,7 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { updateUser } from "../../actions/userProfile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const FormCreateSonglist = ({ playlist, users, id }) => {
   const [currentId, setCurrentId] = useState(id);
@@ -46,7 +46,7 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
   }, [users]);
 
   useEffect(() => {
-    console.log(myFlag);
+    // console.log(myFlag);
   }, [myFlag]);
 
   const classes = useStyles();
@@ -75,18 +75,26 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
     // RIght here is the code for the current contributed playlists. RN I was just checking if it will update
     // Once the user adds a song. But I need to make it so it only updates once the user inputs to a playlist they haven't contributed
     // to before.
-    dispatch(
-      updateUser(users._id, {
-        ...myContributedPlaylists,
-        contributedPlaylists: [
-          ...myContributedPlaylists.contributedPlaylists,
-          currentId,
-        ],
-      })
-    );
+    console.log(myContributedPlaylists.contributedPlaylists)
+    const alreadyContributed = 
+      myContributedPlaylists.contributedPlaylists.find(p => p == playlist._id);
+    console.log(alreadyContributed);
+    if (!alreadyContributed) {
+      dispatch(
+        updateUser(users._id, {
+          ...myContributedPlaylists,
+          contributedPlaylists: [
+            ...myContributedPlaylists.contributedPlaylists,
+            currentId,
+          ],
+        })
+      );
+    }
+    
     // clear(e);
   };
-  console.log(playlist);
+  console.log(users)
+    // console.log(users.contributedPlaylists);
   return (
     <>
       <form
