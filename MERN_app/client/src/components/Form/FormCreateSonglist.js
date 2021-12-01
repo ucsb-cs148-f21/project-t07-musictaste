@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { addSong } from "../../actions/musicPlaylist";
 import { useHistory } from "react-router-dom";
 import {
@@ -15,6 +15,23 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
+
+/* Add Song Dialog Select */
+import Box from '@mui/material/Box';
+/* import Button from '@mui/material/Button'; */
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+/*import MenuItem from '@mui/material/MenuItem'; */
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import axios from "axios";
+
+/* Dynamic dropdown */
+import FormSongSearch from "./FormSongSearch";
 
 const FormCreateSonglist = ({ id }) => {
   const [currentId, setCurrentId] = useState(id);
@@ -63,6 +80,41 @@ const FormCreateSonglist = ({ id }) => {
     clear();
     history.push(`/musicPlaylists/${currentId}`);
   };
+
+  /* Add Song Dialog Select */
+  const [open, setOpen] = React.useState(false);
+  const [age, setAge] = React.useState('');
+
+    /* I don't think I need this anymore */
+  const handleChange = (event) => {
+    setAge(Number(event.target.value) || '');
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason !== 'backdropClick') {
+      setOpen(false);
+    }
+  };
+
+  const [selectedSong, setSelectedSong] = useState('');
+
+
+
+  /* End Add Song Dialog Select */
+
+  const [searchQuery, setSearchQuery] = useState({
+    title: '',
+    artist: '',
+  });
+
+  const handleSongSelect = (id) => {
+
+  }
+
   return (
     <>
       <form
@@ -71,9 +123,56 @@ const FormCreateSonglist = ({ id }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <PopupState variant="popover" popupId="demo-popup-menu">
+        <PopupState variant="popover" popupId="AddSongPopup">
           {(popupState) => (
             <React.Fragment>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                {...bindTrigger(popupState)}
+              >
+                ADD SONG
+              </IconButton>
+              <Dialog {...bindMenu(popupState)}>
+                <DialogTitle>Song Search</DialogTitle>
+                <DialogContent>
+                  <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                      <TextField
+                        name="Artist"
+                        variant="outlined"
+                        label="Artist"
+                        value={searchQuery.artist}
+                        onChange={(e) =>
+                          setSearchQuery({
+                            ...searchQuery,
+                            artist: e.target.value,
+                          })
+                      }
+                      ></TextField>
+                    </FormControl>
+                    <FormControl sx={{ m: 1, minWidth: 100 }}>
+                      <TextField
+                        name="SongTitle"
+                        variant="outlined"
+                        label="Song Title"
+                        value={searchQuery.title}
+                        onChange={(e) => 
+                          setSearchQuery({
+                            ...searchQuery,
+                            title: e.target.value,
+                          })
+                        }
+                      ></TextField>
+                    </FormControl>
+                    <FormSongSelect querySong={searchQuery.title} queryArtist={searchQuery.artist} />
+                  </Box>
+                </DialogContent>
+              </Dialog>
+              {/*
               <IconButton
                 size="large"
                 edge="start"
@@ -159,6 +258,7 @@ const FormCreateSonglist = ({ id }) => {
                   Clear
                 </Button>
               </Menu>
+              */}
             </React.Fragment>
           )}
         </PopupState>
