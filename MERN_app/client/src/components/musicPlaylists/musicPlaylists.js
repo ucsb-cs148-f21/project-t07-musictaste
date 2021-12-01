@@ -12,7 +12,7 @@ import useStyles from "./styles";
 import MusicPlaylistCards from "./musicPlaylistCards/musicPlaylistCard";
 
 const MusicPlaylists = ({ setCurrentId }) => {
-  const musicplaylists = useSelector((state) => state.musicPlaylists);
+  const musicplaylists = useSelector((state) => state.musicPlaylists.playlists);
   const classes = useStyles();
   const history = useHistory();
   const openForm = () => history.push(`/CreateMusicPlaylist/Form`);

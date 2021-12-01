@@ -13,6 +13,13 @@ const HomeMusicPlaylist = () => {
     dispatch(getPlaylists());
   }, [currentId, dispatch]);
 
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", getPlaylists());
+  //   return () => {
+  //     window.removeEventListener("beforeunload", getPlaylists());
+  //   };
+  // }, []);
+
   return (
     //   console.log("Hello");
     <Grow in>

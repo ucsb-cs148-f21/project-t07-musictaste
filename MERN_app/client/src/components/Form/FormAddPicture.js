@@ -4,7 +4,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlaylist } from "../../actions/musicPlaylist";
-const FormAddPicture = ({ id }) => {
+const FormAddPicture = ({ playlist, id }) => {
   const [currentId, setCurrentId] = useState(id);
   const [pictures, setPictures] = useState([]);
   const [createMyPlaylist, setCreateMyPlaylist] = useState({
@@ -13,10 +13,12 @@ const FormAddPicture = ({ id }) => {
     selectedMainFile: "",
     selectedFiles: [],
   });
-  const playlist = useSelector((state) =>
-    currentId ? state.musicPlaylists.find((p) => p._id === currentId) : null
-  );
-  console.log(playlist);
+  // const playlist = useSelector(
+  //   // (state) => state.musicPlaylists
+  //   (state) =>
+  //     currentId ? state.musicPlaylists.find((p) => p._id === currentId) : null
+  // );
+  // console.log(playlist);
   const dispatch = useDispatch();
   useEffect(() => {
     if (playlist) setCreateMyPlaylist(playlist);

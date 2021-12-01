@@ -38,6 +38,8 @@ export const getPlaylist = async (req, res) => {
   const { page } = req.query;
   try {
     const playlist = await musicPlaylist.findById(id);
+    console.log("This is one console log");
+    console.log(playlist);
     res.status(200).json(playlist);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -78,6 +80,17 @@ export const addToGallery = async (req, res) => {
   });
   res.status(200).json(updatedPlaylist);
 };
+
+// export const addContributor = async (req, res) => {
+//   console.log(req);
+//   const { id } = req.params;
+//   const user = req.body;
+
+// const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, picture, {
+//   new: true,
+// });
+// res.status(200).json(updatedPlaylist);
+// };
 
 // Need to implement this next
 

@@ -8,46 +8,50 @@ import {
   DELETE_PLAYLIST,
   UPDATE_PLAYLIST,
   COMMENT_PLAYLIST,
+  START_LOADING,
+  END_LOADING,
+  ADD_CONTRIBUTOR,
 } from "../constants/actionTypes";
 import * as api from "../api";
 
 export const createPlaylist = (playlist) => async (dispatch) => {
   try {
-    // dispatch({ type: START_LOADING });
+    dispatch({ type: START_LOADING });
     const { data } = await api.createPlaylist(playlist);
     dispatch({ type: CREATE_PLAYLIST, payload: data });
-    // dispatch({ type: END_LOADING });
-
+    dispatch({ type: END_LOADING });
     console.log(data);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getPlaylists = () => async (dispatch) => {
+export const getPlaylists = (id) => async (dispatch) => {
   try {
-    // dispatch({ type: START_LOADING });
-    const { data } = await api.fetchPlaylists();
+    dispatch({ type: START_LOADING });
+    console.log("We returning playlistss");
+    const { data } = await api.fetchPlaylists(id);
+    // console.log(data);
     dispatch({ type: FETCH_ALL_PLAYLISTS, payload: data });
-    // dispatch({ type: END_LOADING });
-
-    // console.log(data);
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
   }
 };
-export const getPlaylist = (id) => async (dispatch) => {
-  try {
-    // dispatch({ type: START_LOADING });
-    const { data } = await api.fetchPlaylist(id);
-    dispatch({ type: FETCH_PLAYLIST, payload: data });
-    // dispatch({ type: END_LOADING });
 
-    // console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const getPlaylist = (id) => async (dispatch) => {
+//   try {
+//     // dispatch({ type: START_LOADING });
+//     const { data } = await api.fetchPlaylist(id);
+//     console.log(data);
+//     dispatch({ type: FETCH_PLAYLIST, payload: data });
+//     // dispatch({ type: END_LOADING });
+
+//     console.log(data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export const addSong = (id, songlist) => async (dispatch) => {
   try {
@@ -75,6 +79,22 @@ export const getSonglists = (id) => async (dispatch) => {
   }
 };
 
+// export const addContributor =
+//   (creator_id, playlist_id, new_user) => async (dispatch) => {
+//     console.log("in Actions");
+//     try {
+//       const { data } = await api.addContributor(
+//         creator_id,
+//         playlist_id,
+//         new_user
+//       );
+//       console.log(data);
+//       dispatch({ type: ADD_CONTRIBUTOR, payload: data });
+//     } catch (error) {
+//       console.log("Error is Here in the MusicPlaylist Actions");
+//       console.log(error);
+//     }
+//   };
 export const addToGallery = (id, picture) => async (dispatch) => {
   try {
     const { data } = await api.addToGallery(id, picture);

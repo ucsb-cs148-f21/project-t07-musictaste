@@ -15,9 +15,14 @@ export const FETCH_PLAYLIST = "FETCH_PLAYLIST";
 export const UPDATE_PLAYLIST = "UPDATE_PLAYLIST";
 export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const COMMENT_PLAYLIST = "COMMENT_PLAYLIST";
+export const ADD_CONTRIBUTOR = "ADD_CONTRIBUTOR";
 
 export const FETCH_BY_SEARCH = "FETCH_BY_SEARCH";
 export const START_LOADING = "START_LOADING";
 export const END_LOADING = "END_LOADING";
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
+export const UPDATEUSER = "UPDATEUSER";
+export const GETUSER = "GETUSER";
+export const LOADUSER = "LOADUSER";
+export const ENDLOADUSER = "ENDLOADUSER";
