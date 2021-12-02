@@ -127,7 +127,7 @@ export const likePlaylist = (id) => async (dispatch) => {
 export const commentPlaylist = (value, id) => async (dispatch) => {
   try {
     const { data } = await api.commentPlaylist(value, id);
-    console.log(data);
+    //console.log(data);
     dispatch({ type: COMMENT_PLAYLIST, payload: data });
     return data.comments;
   } catch (error) {

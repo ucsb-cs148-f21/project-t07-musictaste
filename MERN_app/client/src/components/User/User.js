@@ -10,6 +10,7 @@ import MusicPlaylist from "../musicPlaylists/musicPlaylistCards/MusicPlayist/mus
 import PlaylistPreview from "./PlaylistPreview";
 import { ClassNames } from "@emotion/react";
 import { getUser } from "../../actions/userProfile";
+import { getPlaylists } from "../../actions/musicPlaylist";
 
 const User = () => {
   const { id } = useParams();
@@ -17,7 +18,9 @@ const User = () => {
   useEffect(() => {
     dispatch(getUser(id));
   }, [id, dispatch]);
-
+  useEffect(() => {
+    dispatch(getPlaylists());
+  }, [id, dispatch])
   // useEffect(() => {
   //   console.log("This is working rn");
   //   window.addEventListener("beforeunload", getUser(id));
@@ -28,6 +31,7 @@ const User = () => {
   // }, []);
 
   const users = useSelector((state) => state.users);
+  const playlists = useSelector((state) => state.musicPlaylists)
   return (
     <Container>
       <div class="blocks">
@@ -47,7 +51,7 @@ const User = () => {
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <FormUserProfile users={users} />
+            <FormUserProfile users={users} playlists={playlists} />
           </Grid>
         </Grid>
       </div>

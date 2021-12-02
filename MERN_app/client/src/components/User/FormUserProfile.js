@@ -7,10 +7,28 @@ import { createPost } from "../../actions/posts";
 import PictureUploader from "./PictureUploader";
 import PlaylistPreview from "./PlaylistPreview";
 import { getUser } from "../../actions/userProfile";
-const FormUserProfile = ({ users }) => {
+import { useHistory } from "react-router-dom";
+import { fabClasses } from "@mui/material";
+const FormUserProfile = ({ users, playlists }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const intersection = playlists.playlists.filter(element => users.contributedPlaylists.includes(element._id));
+  const elements = [];
+  const history = useHistory();
 
+  console.log(playlists.playlists);
+  for (let i = 0; i < 4; i++) {
+    if (intersection[i]) {
+      elements.push(<PlaylistPreview 
+        className={classes.fileInput} 
+        playlistname={intersection[i].title} 
+        imagesource={intersection[i].selectedMainFile} 
+        click={(e) => {
+          history.push(`/musicPlaylists/${intersection[i]._id}`);
+        }}
+        />);
+    }
+  }
   return (
     <Paper className={classes.paper}>
       {/* <form
@@ -36,11 +54,12 @@ const FormUserProfile = ({ users }) => {
       {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
       <br />
       <Typography variant="h5" align="center">
-        Most listened artists
+        Recently Contributed Playlists
       </Typography>
       {/* <PlaylistPreview /> */}
       <form2 className={classes.form2}>
-        <PlaylistPreview
+        {elements}
+        {/* <PlaylistPreview
           className={classes.fileInput}
           playlistname={"Keshi"}
           imagesource={"https://m.buro247.my/images/keshi-album-cover.jpg"}
@@ -65,7 +84,9 @@ const FormUserProfile = ({ users }) => {
           imagesource={
             "https://img.discogs.com/Bu0ITL9130yoosluJS0kXqD1_9E=/fit-in/577x772/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-15842293-1598800791-5825.png.jpg"
           }
-        ></PlaylistPreview>
+        ></PlaylistPreview> */}
+        
+        <PlaylistPreview playlists={intersection}></PlaylistPreview>
       </form2>
       <br />
       <br />

@@ -75,10 +75,8 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
     // RIght here is the code for the current contributed playlists. RN I was just checking if it will update
     // Once the user adds a song. But I need to make it so it only updates once the user inputs to a playlist they haven't contributed
     // to before.
-    console.log(myContributedPlaylists.contributedPlaylists)
     const alreadyContributed = 
       myContributedPlaylists.contributedPlaylists.find(p => p == playlist._id);
-    console.log(alreadyContributed);
     if (!alreadyContributed) {
       dispatch(
         updateUser(users._id, {
@@ -93,7 +91,7 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
     
     // clear(e);
   };
-  console.log(users)
+  // console.log(users)
     // console.log(users.contributedPlaylists);
   return (
     <>
