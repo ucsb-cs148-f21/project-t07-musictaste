@@ -79,22 +79,23 @@ export const getSonglists = (id) => async (dispatch) => {
   }
 };
 
-// export const addContributor =
-//   (creator_id, playlist_id, new_user) => async (dispatch) => {
-//     console.log("in Actions");
-//     try {
-//       const { data } = await api.addContributor(
-//         creator_id,
-//         playlist_id,
-//         new_user
-//       );
-//       console.log(data);
-//       dispatch({ type: ADD_CONTRIBUTOR, payload: data });
-//     } catch (error) {
-//       console.log("Error is Here in the MusicPlaylist Actions");
-//       console.log(error);
-//     }
-//   };
+export const addContributor =
+  (creator_id, playlist_id, new_user) => async (dispatch) => {
+    console.log("in Actions");
+    console.log(creator_id, playlist_id, new_user);
+    try {
+      const { data } = await api.addContributor(
+        creator_id,
+        playlist_id,
+        new_user
+      );
+      console.log(data);
+      dispatch({ type: ADD_CONTRIBUTOR, payload: data });
+    } catch (error) {
+      console.log("Error is Here in the MusicPlaylist Actions");
+      console.log(error);
+    }
+  };
 export const addToGallery = (id, picture) => async (dispatch) => {
   try {
     const { data } = await api.addToGallery(id, picture);

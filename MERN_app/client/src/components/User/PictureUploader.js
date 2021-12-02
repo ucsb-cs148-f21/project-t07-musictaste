@@ -22,7 +22,7 @@ const PictureUploader = ({ user, id, pic }) => {
     });
   };
   const handlePictureSelected = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(updateUser(id, { ...picData }));
     clearPhoto();
   };

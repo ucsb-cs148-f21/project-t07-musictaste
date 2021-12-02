@@ -3,11 +3,15 @@ import {
   GETUSER,
   LOADUSER,
   ENDLOADUSER,
+  GETUSERS,
 } from "../constants/actionTypes";
 
 export default (users = [], action) => {
   switch (action.type) {
     case GETUSER:
+      // return { ...users, users: action.payload };
+      return action.payload;
+    case GETUSERS:
       // return { ...users, users: action.payload };
       return action.payload;
     case UPDATEUSER:

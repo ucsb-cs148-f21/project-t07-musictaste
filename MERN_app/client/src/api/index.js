@@ -53,5 +53,6 @@ export const updateUser = (id, updatedUser) =>
   API.patch(`/users/${id}`, updatedUser);
 export const getUser = (id) =>
   API.get(`/users/${id}`) || API.get(`/musicPlaylists/${id}/user`);
+export const getUsers = (id) => API.get(`/musicPlaylists/${id}/users`);
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
