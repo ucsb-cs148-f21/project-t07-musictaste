@@ -24,5 +24,6 @@ export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 export const UPDATEUSER = "UPDATEUSER";
 export const GETUSER = "GETUSER";
+export const GETUSERS = "GETUSERS";
 export const LOADUSER = "LOADUSER";
 export const ENDLOADUSER = "ENDLOADUSER";

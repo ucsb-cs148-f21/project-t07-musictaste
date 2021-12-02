@@ -74,5 +74,3 @@ export default (state = { isLoading: true, playlists: [] }, action) => {
       return state;
   }
 };
-
-// return users.map((user) => (user._id === action.payload._id ? action.payload : user));

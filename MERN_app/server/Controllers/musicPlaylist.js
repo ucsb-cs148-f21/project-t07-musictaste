@@ -81,18 +81,16 @@ export const addToGallery = async (req, res) => {
   res.status(200).json(updatedPlaylist);
 };
 
-// export const addContributor = async (req, res) => {
-//   console.log(req);
-//   const { id } = req.params;
-//   const user = req.body;
-
-// const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, picture, {
-//   new: true,
-// });
-// res.status(200).json(updatedPlaylist);
-// };
-
-// Need to implement this next
+export const addContributor = async (req, res) => {
+  const { id } = req.params;
+  const user = req.body;
+  const playlist = await musicPlaylist.findById(id);
+  playlist.contributor.push(user.new_user);
+  const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, playlist, {
+    new: true,
+  });
+  res.status(200).json(updatedPlaylist);
+};
 
 export const likePlaylist = async (req, res) => {
   const { id } = req.params;
