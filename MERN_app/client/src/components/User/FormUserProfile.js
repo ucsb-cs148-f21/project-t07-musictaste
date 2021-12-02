@@ -9,24 +9,28 @@ import PlaylistPreview from "./PlaylistPreview";
 import { getUser } from "../../actions/userProfile";
 import { useHistory } from "react-router-dom";
 import { fabClasses } from "@mui/material";
-const FormUserProfile = ({ users, playlists }) => {
+const FormUserProfile = ({ user, playlists }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const intersection = playlists.playlists.filter(element => users.contributedPlaylists.includes(element._id));
+  const intersection = playlists.playlists.filter((element) =>
+    user.contributedPlaylists.includes(element._id)
+  );
   const elements = [];
   const history = useHistory();
 
   console.log(playlists.playlists);
   for (let i = 0; i < 4; i++) {
     if (intersection[i]) {
-      elements.push(<PlaylistPreview 
-        className={classes.fileInput} 
-        playlistname={intersection[i].title} 
-        imagesource={intersection[i].selectedMainFile} 
-        click={(e) => {
-          history.push(`/musicPlaylists/${intersection[i]._id}`);
-        }}
-        />);
+      elements.push(
+        <PlaylistPreview
+          className={classes.fileInput}
+          playlistname={intersection[i].title}
+          imagesource={intersection[i].selectedMainFile}
+          click={(e) => {
+            history.push(`/musicPlaylists/${intersection[i]._id}`);
+          }}
+        />
+      );
     }
   }
   return (
@@ -38,17 +42,17 @@ const FormUserProfile = ({ users, playlists }) => {
         onSubmit={handleSubmit}
       > */}
       <Typography variant="h4" align="center">
-        {users.name}
+        {user.name}
       </Typography>
-      <img src={users.profilePicture} height="200" width="280" />
+      <img src={user.profilePicture} height="200" width="280" />
       <br /> <br />
       <PictureUploader
         // user={user?.result}
         // id={user?.result?._id}
         // pic={user?.result?.profilePicture}
-        user={users}
-        id={users._id}
-        pic={users.profilePicture}
+        user={user}
+        id={user._id}
+        pic={user.profilePicture}
       />
       <br />
       {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
@@ -85,7 +89,7 @@ const FormUserProfile = ({ users, playlists }) => {
             "https://img.discogs.com/Bu0ITL9130yoosluJS0kXqD1_9E=/fit-in/577x772/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-15842293-1598800791-5825.png.jpg"
           }
         ></PlaylistPreview> */}
-        
+
         <PlaylistPreview playlists={intersection}></PlaylistPreview>
       </form2>
       <br />

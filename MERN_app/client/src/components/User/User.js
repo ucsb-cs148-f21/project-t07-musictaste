@@ -1,4 +1,10 @@
-import { Container, Grid, Paper, Typography } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  CircularProgress,
+} from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 // import Form from "../Form/Form";
 import { useParams } from "react-router-dom";
@@ -8,19 +14,24 @@ import FormUserProfile from "./FormUserProfile";
 import PictureUploader from "./PictureUploader";
 import MusicPlaylist from "../musicPlaylists/musicPlaylistCards/MusicPlayist/musicPlaylist";
 import PlaylistPreview from "./PlaylistPreview";
+import useStyles from "./styles";
 import { ClassNames } from "@emotion/react";
-import { getUser } from "../../actions/userProfile";
+import { getUser, getUsers } from "../../actions/userProfile";
 import { getPlaylists } from "../../actions/musicPlaylist";
 
 const User = () => {
+  const my_user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
   const dispatch = useDispatch();
+  const classes = useStyles();
   useEffect(() => {
-    dispatch(getUser(id));
+    console.log("In dispatch get Users");
+    dispatch(getUsers(id));
   }, [id, dispatch]);
   useEffect(() => {
+    console.log("In dispatch get Playlists");
     dispatch(getPlaylists());
-  }, [id, dispatch])
+  }, [id, dispatch]);
   // useEffect(() => {
   //   console.log("This is working rn");
   //   window.addEventListener("beforeunload", getUser(id));
@@ -30,8 +41,20 @@ const User = () => {
   //   };
   // }, []);
 
-  const users = useSelector((state) => state.users);
-  const playlists = useSelector((state) => state.musicPlaylists)
+  const { users, isLoadingU } = useSelector((state) => state.users);
+  const user = my_user?.result?._id
+    ? users.find((i) => i._id === my_user?.result?._id)
+    : null;
+  const playlists = useSelector((state) => state.musicPlaylists);
+  if (isLoadingU) {
+    return (
+      <Paper elevation={6} className={classes.loadingPaper}>
+        <CircularProgress size="7em" />
+      </Paper>
+    );
+  }
+
+  console.log(users);
   return (
     <Container>
       <div class="blocks">
@@ -51,7 +74,7 @@ const User = () => {
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <FormUserProfile users={users} playlists={playlists} />
+            <FormUserProfile user={user} playlists={playlists} />
           </Grid>
         </Grid>
       </div>

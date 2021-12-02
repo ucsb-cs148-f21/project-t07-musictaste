@@ -22,7 +22,7 @@ export default (state = { isLoading: true, playlists: [] }, action) => {
     case CREATE_PLAYLIST:
       return { ...state, playlists: [...state.playlists, action.payload] };
     case FETCH_ALL_PLAYLISTS:
-      console.log(`action.payload is ${[action.payload]}`);
+      console.log(`action.payload is ${action.payload}`);
       return { ...state, playlists: action.payload };
 
     case FETCH_PLAYLIST:
