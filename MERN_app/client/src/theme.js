@@ -1,11 +1,11 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { yellow, green } from "@material-ui/core/colors";
-import Raleway from './fonts/Raleway/static/Raleway-Regular.ttf';
-import OpenSans from './fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf';
-import Bebas_Neue from './fonts/Bebas_Neue/BebasNeue-Regular.ttf'
+import Raleway from "./fonts/Raleway/static/Raleway-Regular.ttf";
+import OpenSans from "./fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf";
+import Bebas_Neue from "./fonts/Bebas_Neue/BebasNeue-Regular.ttf";
 
-const raleway = "'Raleway', sans-serif"
-const openSans = "'Open Sans', sans-serif"
+const raleway = "'Raleway', sans-serif";
+const openSans = "'Open Sans', sans-serif";
 
 // const raleway = {
 //     fontFamily: 'Raleway',
@@ -40,23 +40,23 @@ const openSans = "'Open Sans', sans-serif"
 const theme = createTheme({
   palette: {
     primary: {
-        main: "#9DB5B2",
-        light: "94D1BE",
-        dark: "#3B413C",
-        contrastText: "DAF0EE"
-        // main: "#4C061D" // ,
-        // light:"#71092C",
-        // dark: "#390516",
-        // contrastText:
+      main: "#9DB5B2",
+      light: "94D1BE",
+      dark: "#3B413C",
+      // contrastText: "DAF0EE" this is what needed to be commented out. It caused an error with the search tags
+      // main: "#4C061D" // ,
+      // light:"#71092C",
+      // dark: "#390516",
+      // contrastText:
     },
     secondary: {
-        main: "#AA767C",
-        light: "#FAD4D8",
-        dark: "#4C061D",
+      main: "#AA767C",
+      light: "#FAD4D8",
+      dark: "#4C061D",
     },
   },
   typography: {
-    fontFamily: {raleway, openSans}
+    fontFamily: { raleway, openSans },
   },
 });
 

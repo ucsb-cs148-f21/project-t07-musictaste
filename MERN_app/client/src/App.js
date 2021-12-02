@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar/Navbar";
 import PostsHome from "./components/Posts/Post/PostsHome/Home";
 import Auth from "./components/Auth/Auth";
 import User from "./components/User/User";
+import FormCreateMusicPlaylist from "./components/Form/FormCreateMusicPlaylist";
 import PostDetails from "./components/PostDetails/PostDetails";
-import musicPlaylists from "./components/musicPlaylists/musicPlaylists";
+import HomeMusicPlaylist from "./components/musicPlaylists/HomeMusicPlaylist/HomeMusicPlaylist";
 import musicPlaylist from "./components/musicPlaylists/musicPlaylistCards/MusicPlayist/musicPlaylist";
 const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -29,8 +30,13 @@ const App = () => {
           <Route path="/posts/search" exact component={PostsHome} />
           <Route path="/posts/:id" component={PostDetails} />
           <Route path="/users/:id" exact component={User}></Route>
-          <Route path="/musicPlaylist" exact component={musicPlaylist} />
-          <Route path="/musicPlaylists" exact component={musicPlaylists} />
+          <Route path="/musicPlaylists" exact component={HomeMusicPlaylist} />
+          <Route path="/musicPlaylists/:id" exact component={musicPlaylist} />
+          <Route
+            path="/CreateMusicPlaylist/Form"
+            exact
+            component={FormCreateMusicPlaylist}
+          />
         </Switch>
       </Container>
     </BrowserRouter>

@@ -6,73 +6,92 @@ import useStyles from "../Form/styles";
 import { createPost } from "../../actions/posts";
 import PictureUploader from "./PictureUploader";
 import PlaylistPreview from "./PlaylistPreview";
-const FormUserProfile = () => {
-  const [postData, setPostData] = useState({
-    creator: "",
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
-  });
-  const classes = useStyles();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+import { getUser } from "../../actions/userProfile";
+import { useHistory } from "react-router-dom";
+import { fabClasses } from "@mui/material";
+const FormUserProfile = ({ users, playlists }) => {
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createPost(postData));
-  };
+  const classes = useStyles();
+  const intersection = playlists.playlists.filter(element => users.contributedPlaylists.includes(element._id));
+  const elements = [];
+  const history = useHistory();
 
-  const clear = () => {};
+  console.log(playlists.playlists);
+  for (let i = 0; i < 4; i++) {
+    if (intersection[i]) {
+      elements.push(<PlaylistPreview 
+        className={classes.fileInput} 
+        playlistname={intersection[i].title} 
+        imagesource={intersection[i].selectedMainFile} 
+        click={(e) => {
+          history.push(`/musicPlaylists/${intersection[i]._id}`);
+        }}
+        />);
+    }
+  }
   return (
     <Paper className={classes.paper}>
-      <form
+      {/* <form
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
-      >
-        <Typography variant="h4">{user.result.name}</Typography>
-        <br /> <br />
-        <PictureUploader />
-        <br />
-        {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
-        <br />
-        <Typography variant="h5">Most listened artists</Typography>
-        {/* <PlaylistPreview /> */}
-
-        <form2 className={classes.form2}>
-          <PlaylistPreview
-            className={classes.fileInput}
-            playlistname={"Keshi"}
-            imagesource={"https://m.buro247.my/images/keshi-album-cover.jpg"}
-          ></PlaylistPreview>
-          <PlaylistPreview
-            className={classes.fileInput}
-            playlistname={"Glass Animals"}
-            imagesource={
-              "https://i1.sndcdn.com/avatars-JeZfqirMgzo5m1TX-DuFvMQ-t500x500.jpg"
-            }
-          ></PlaylistPreview>
-          <PlaylistPreview
-            className={classes.fileInput}
-            playlistname={"Kanye"}
-            imagesource={
-              "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU0OTkwNDUxOTQ5MDUzNDQ3/kanye-west-attends-the-christian-dior-show-as-part-of-the-paris-fashion-week-womenswear-fall-winter-2015-2016-on-march-6-2015-in-paris-france-photo-by-dominique-charriau-wireimage-square.jpg"
-            }
-          ></PlaylistPreview>
-          <PlaylistPreview
-            className={classes.fileInput}
-            playlistname={"BAEKHYUN"}
-            imagesource={
-              "https://img.discogs.com/Bu0ITL9130yoosluJS0kXqD1_9E=/fit-in/577x772/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-15842293-1598800791-5825.png.jpg"
-            }
-          ></PlaylistPreview>
-        </form2>
-
-        <br />
-        <br />
-        <br />
-      </form>
+      > */}
+      <Typography variant="h4" align="center">
+        {users.name}
+      </Typography>
+      <img src={users.profilePicture} height="200" width="280" />
+      <br /> <br />
+      <PictureUploader
+        // user={user?.result}
+        // id={user?.result?._id}
+        // pic={user?.result?.profilePicture}
+        user={users}
+        id={users._id}
+        pic={users.profilePicture}
+      />
+      <br />
+      {/* <Typography variant="body1"> 34 groups contributed to</Typography> */}
+      <br />
+      <Typography variant="h5" align="center">
+        Recently Contributed Playlists
+      </Typography>
+      {/* <PlaylistPreview /> */}
+      <form2 className={classes.form2}>
+        {elements}
+        {/* <PlaylistPreview
+          className={classes.fileInput}
+          playlistname={"Keshi"}
+          imagesource={"https://m.buro247.my/images/keshi-album-cover.jpg"}
+        ></PlaylistPreview>
+        <PlaylistPreview
+          className={classes.fileInput}
+          playlistname={"Glass Animals"}
+          imagesource={
+            "https://i1.sndcdn.com/avatars-JeZfqirMgzo5m1TX-DuFvMQ-t500x500.jpg"
+          }
+        ></PlaylistPreview>
+        <PlaylistPreview
+          className={classes.fileInput}
+          playlistname={"Kanye"}
+          imagesource={
+            "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU0OTkwNDUxOTQ5MDUzNDQ3/kanye-west-attends-the-christian-dior-show-as-part-of-the-paris-fashion-week-womenswear-fall-winter-2015-2016-on-march-6-2015-in-paris-france-photo-by-dominique-charriau-wireimage-square.jpg"
+          }
+        ></PlaylistPreview>
+        <PlaylistPreview
+          className={classes.fileInput}
+          playlistname={"BAEKHYUN"}
+          imagesource={
+            "https://img.discogs.com/Bu0ITL9130yoosluJS0kXqD1_9E=/fit-in/577x772/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-15842293-1598800791-5825.png.jpg"
+          }
+        ></PlaylistPreview> */}
+        
+        <PlaylistPreview playlists={intersection}></PlaylistPreview>
+      </form2>
+      <br />
+      <br />
+      <br />
+      {/* </form> */}
     </Paper>
   );
 };

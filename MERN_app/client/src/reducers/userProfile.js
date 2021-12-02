@@ -1,15 +1,26 @@
-import { FETCH_ALL, CREATE, UPDATE} from "../constants/actionTypes";
-export default (profiles = [], action) => {
-    switch (action.type) {
-        case UPDATE:
-            return profiles.map((profile) => 
-                profiles._id === action.payload._id ? action.payload : profile
-            );
-        case FETCH_ALL:
-            return action.payload;
-        case CREATE:
-            return [...profiles, action.payload];
-        default:
-            return profiles;
-    }
-}
+import {
+  UPDATEUSER,
+  GETUSER,
+  LOADUSER,
+  ENDLOADUSER,
+  GETUSERS,
+} from "../constants/actionTypes";
+
+export default (users = [], action) => {
+  switch (action.type) {
+    case GETUSER:
+      // return { ...users, users: action.payload };
+      return action.payload;
+    case GETUSERS:
+      // return { ...users, users: action.payload };
+      return action.payload;
+    case UPDATEUSER:
+      return users._id === action.payload._id ? action.payload : users;
+    case LOADUSER:
+      return { ...users, isLoading: true };
+    case ENDLOADUSER:
+      return { ...users, isLoading: false };
+    default:
+      return users;
+  }
+};

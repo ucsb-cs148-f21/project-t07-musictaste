@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
 import Posts from "../../../Posts/Posts";
-import Form from "../../../Form/Form";
+import Form from "../../../Form/FormPost";
 import Pagination from "../../../Pagination";
 import { getPosts, getPostsBySearch } from "../../../../actions/posts";
 import useStyles from "./styles";
@@ -42,12 +42,12 @@ const Home = () => {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 13) {
-      //   searchPost();
-    }
-  };
-  const handleAdd = (tag) => setTags([...tags, tag]);
+  // const handleKeyPress = (e) => {
+  //   if (e.keyCode ===   13) {
+  //     searchPost();
+  //   }
+  // };
+  const handleAdd = (tag) => setTags((tags) => [...tags, tag]);
 
   const handleDelete = (tagToDelete) =>
     setTags(tags.filter((tag) => tag !== tagToDelete));
@@ -64,12 +64,12 @@ const Home = () => {
         >
           <Grid item xs={12} md={8} container direction={"column"}>
             <Posts setCurrentId={setCurrentId} />
-            <Paper elevation={6} className={classes.pagination} >
-              <Pagination page={page} sx={{ display: 'block' }} />
+            <Paper elevation={6} className={classes.pagination}>
+              <Pagination page={page} sx={{ display: "block" }} />
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            {/* <AppBar
+            <AppBar
               className={classes.appBarSearch}
               position="static"
               color="inherit"
@@ -77,8 +77,8 @@ const Home = () => {
               <TextField
                 name="search"
                 variant="outlined"
-                label="Search Memories"
-                // onKeyPress={handleKeyPress}
+                label="Search Creator"
+                // onKeyDown={handleKeyPress}
                 fullWidth
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -99,7 +99,7 @@ const Home = () => {
               >
                 Search
               </Button>
-            </AppBar> */}
+            </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
           </Grid>
         </Grid>

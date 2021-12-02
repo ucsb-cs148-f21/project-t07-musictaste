@@ -5,7 +5,7 @@ import styles from "./PlaylistPreview.css";
 const PlaylistPreview = (props) => {
   return (
     <div class="playlist">
-      <img src={props.imagesource} class="cover" />
+      <img src={props.imagesource} onClick={props.click} class="cover" />
       <p class="title">{props.playlistname}</p>
     </div>
   );
