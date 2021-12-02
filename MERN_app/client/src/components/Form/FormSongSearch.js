@@ -49,33 +49,21 @@ const FormSongSearch = (props) => {
     // console.log('selected: ' + JSON.stringify(options));
     // console.log('val: ' + JSON.stringify(val));
     const detail = options.filter(s => s.id === val);
-    console.log(detail[0]);
+    console.log('hello: ' + JSON.stringify(detail[0]));
     setSongInfo(detail[0]);
   }
 
   /* End Add Song Dialog Select */
 
-  // const [songSearchResults, setSongSearchResults] = useState({selectedResult: '', listOfSongSearchResults: []});
-
-
-//   useEffect(() => {
-//         axios('https://accounts.spotify.com/api/token', {
-//             method: 'POST',
-//             data: 'grant_type=client_credentials',
-//             headers: {
-//                 'Content-Type' : 'application/x-www-form-urlencoded',
-//                 'Authorization' : 'Basic' + btoa('a39abe0974fa4a8283a3d0ba39db7be0:07075b9be29c4b98b232f8d8e20aa5c0'),
-//             }
-//         }).then(tokenResponse => {
-//             setToken(tokenResponse.data.access_token);
-//             console.log('token 1: ' + tokenResponse.data.access_token)
-//         })
-//         console.log('token 2: ' + token)
-//   }, [])
+  const handleSubmission = (event, reason) => {
+    console.log('hi: ' + JSON.stringify(songInfo));
+    props.handleSubmit(songInfo);
+    props.closeDialog(event, reason);
+  }
 
   useEffect(() => {
-    console.log('Client ID: ' + spotify.ClientId);
-    console.log('Client Secret: ' + spotify.ClientSecret);
+    // console.log('Client ID: ' + spotify.ClientId);
+    // console.log('Client Secret: ' + spotify.ClientSecret);
     axios('https://accounts.spotify.com/api/token', {
             headers: {
                 'Content-Type' : 'application/x-www-form-urlencoded',
@@ -128,49 +116,6 @@ const FormSongSearch = (props) => {
     console.log(results);
   }
 
-  // useEffect(() => {
-  //   // searchSpotify();
-  //   console.log(props);
-  //   console.log('Searching Spotify');
-  //   console.log('Client ID: ' + spotify.ClientId);
-  //   console.log('Client Secret: ' + spotify.ClientSecret);
-  //   axios('https://accounts.spotify.com/api/token', {
-  //           headers: {
-  //               'Content-Type' : 'application/x-www-form-urlencoded',
-  //               'Authorization' : 'Basic ' + btoa(spotify.ClientId + ':' + spotify.ClientSecret)      
-  //           },
-  //           data: 'grant_type=client_credentials',
-  //           method: 'POST'
-  //       }).then(tokenResponse => {
-  //           // setToken(tokenResponse.data.access_token); not working for some reason
-  //           console.log('token 1: ' + tokenResponse.data.access_token);
-  //           console.log('querySong: ' + props.querySong);
-  //           console.log('queryArtist: ' + props.queryArtist);
-
-  //           axios(`https://api.spotify.com/v1/search?q=track%3A${props.querySong}%2Bartist%3A${props.queryArtist}&type=track%2Cartist&limit=10`, {
-  //               headers: {
-  //                   'Authorization' : 'Bearer ' + tokenResponse.data.access_token,
-  //                   'Accept' : 'application/json',
-  //                   'Content-Type' : 'application/json',
-  //               },
-  //               method: 'GET',
-  //           }).then(searchResponse => {
-  //               console.log('searchRespons: ' + searchResponse);
-  //               console.log('tracks: ' + searchResponse.data.tracks.items);
-
-  //               setSongSearchResults({
-  //                   selectedResult: songSearchResults.selectedResult,
-  //                   listOfSongSearchResults: searchResponse.data.tracks.items
-  //               });
-  //           });
-
-  //       }).catch(err => {
-  //           if(err.request){ console.log(err.request) }
-  //           if(err.response){ console.log(err.response) } 
-  //       });
-  //       // console.log('token 2: ' + token)
-  // }, [props.querySong, props.queryArtist]);
-
     return (
       <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
       <FormControl sx={{ m: 1, minWidth: 100 }}>
@@ -210,7 +155,10 @@ const FormSongSearch = (props) => {
           ></TextField>
         </FormControl>
         <FormSongSearchDropdown options={results.listOfResults} changed={selection}/>
-        {/*<Button variant="contained" onClick={props.handleSubmit(songInfo)}>Add Song</Button>*/}
+        <DialogActions>
+          <Button variant="contained" onClick={handleSubmission}>Add Song</Button>
+          {/*<Button variant="contained" onClick={props.handleSubmit(songInfo)}>Add Song</Button>*/}
+        </DialogActions>
       </Box>
     );
 }
