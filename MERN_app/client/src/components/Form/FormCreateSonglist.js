@@ -17,6 +17,23 @@ import useStyles from "./styles";
 import { updateUser } from "../../actions/userProfile";
 import { useDispatch, useSelector } from "react-redux";
 
+/* Add Song Dialog Select */
+import Box from '@mui/material/Box';
+/* import Button from '@mui/material/Button'; */
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+/*import MenuItem from '@mui/material/MenuItem'; */
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import axios from "axios";
+
+/* Dynamic dropdown */
+import FormSongSearch from "./FormSongSearch";
+
 const FormCreateSonglist = ({ playlist, users, id }) => {
   const [currentId, setCurrentId] = useState(id);
   const [myFlag, setmyFlag] = useState(false);
@@ -91,8 +108,11 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
     
     // clear(e);
   };
-  // console.log(users)
-    // console.log(users.contributedPlaylists);
+
+  const handleSongSelect = songDetail => {
+    console.log(songDetail.name);
+  }
+
   return (
     <>
       <form
@@ -101,11 +121,28 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <PopupState variant="popover" popupId="demo-popup-menu">
+        <PopupState variant="popover" popupId="AddSongPopup">
           {(popupState) => (
             <React.Fragment>
               <IconButton
                 size="medium"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                {...bindTrigger(popupState)}
+              >
+                ADD SONG
+              </IconButton>
+              <Dialog {...bindMenu(popupState)}>
+                <DialogTitle>Song Search</DialogTitle>
+                <DialogContent>
+                <FormSongSearch handleSubmit={handleSongSelect}/>
+                </DialogContent>
+              </Dialog>
+              {/*
+              <IconButton
+                size="large"
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
@@ -141,7 +178,6 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
                     })
                   }
                 ></TextField>
-                {/* {console.log(myContributedPlaylists)} */}
                 <TextField
                   name="Song Genre"
                   variant="outlined"
@@ -190,6 +226,7 @@ const FormCreateSonglist = ({ playlist, users, id }) => {
                   Clear
                 </Button>
               </Menu>
+              */}
             </React.Fragment>
           )}
         </PopupState>
