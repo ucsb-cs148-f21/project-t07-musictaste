@@ -100,19 +100,8 @@ const FormCreateSonglist = ({ id }) => {
     }
   };
 
-  const [selectedSong, setSelectedSong] = useState('');
-
-
-
-  /* End Add Song Dialog Select */
-
-  const [searchQuery, setSearchQuery] = useState({
-    title: '',
-    artist: '',
-  });
-
-  const handleSongSelect = (id) => {
-
+  const handleSongSelect = songDetail => {
+    console.log(songDetail.name);
   }
 
   return (
@@ -139,37 +128,7 @@ const FormCreateSonglist = ({ id }) => {
               <Dialog {...bindMenu(popupState)}>
                 <DialogTitle>Song Search</DialogTitle>
                 <DialogContent>
-                  <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                  <FormControl sx={{ m: 1, minWidth: 100 }}>
-                      <TextField
-                        name="Artist"
-                        variant="outlined"
-                        label="Artist"
-                        value={searchQuery.artist}
-                        onChange={(e) =>
-                          setSearchQuery({
-                            ...searchQuery,
-                            artist: e.target.value,
-                          })
-                      }
-                      ></TextField>
-                    </FormControl>
-                    <FormControl sx={{ m: 1, minWidth: 100 }}>
-                      <TextField
-                        name="SongTitle"
-                        variant="outlined"
-                        label="Song Title"
-                        value={searchQuery.title}
-                        onChange={(e) => 
-                          setSearchQuery({
-                            ...searchQuery,
-                            title: e.target.value,
-                          })
-                        }
-                      ></TextField>
-                    </FormControl>
-                    <FormSongSelect querySong={searchQuery.title} queryArtist={searchQuery.artist} />
-                  </Box>
+                <FormSongSearch handleSubmit={handleSongSelect}/>
                 </DialogContent>
               </Dialog>
               {/*
