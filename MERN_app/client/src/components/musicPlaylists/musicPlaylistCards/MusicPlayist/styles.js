@@ -57,6 +57,14 @@ export default makeStyles({
   title: {
     padding: "0 16px",
   },
+  loadingPaper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    borderRadius: "15px",
+    height: "39vh",
+  },
   cardActions: {
     padding: "0 16px 8px 16px",
     display: "flex",

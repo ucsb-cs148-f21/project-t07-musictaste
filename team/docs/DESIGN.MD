@@ -15,4 +15,4 @@ MongoDB is the database provider which our backend, utilizing Express.js and Nod
 Our team decided on the MERN stack because we wanted to maintain the same language throughout our backend and frontend, and the MERN stack stays consistent with javascript utilized across the backend and frontend. 
 
 # User Interface / UX Flow
-![Music Blog UX Flow](https://user-images.githubusercontent.com/40685456/142366149-5d01377e-c2dd-4a0b-8433-ce6e89f1df4c.png)
+![Musix UX Flow](https://user-images.githubusercontent.com/40685456/143955606-4851c678-bc29-44e9-9e2e-44c670f609b8.png)

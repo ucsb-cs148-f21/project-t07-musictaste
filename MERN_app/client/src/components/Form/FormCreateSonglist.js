@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { addSong } from "../../actions/musicPlaylist";
+import React, { useState, useEffect } from "react";
+import { addSong, addToGallery } from "../../actions/musicPlaylist";
 import { useHistory } from "react-router-dom";
 import {
   TextField,
@@ -14,7 +14,8 @@ import Menu from "@mui/material/Menu";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
-import { useDispatch } from "react-redux";
+import { updateUser } from "../../actions/userProfile";
+import { useDispatch, useSelector } from "react-redux";
 
 /* Add Song Dialog Select */
 import Box from '@mui/material/Box';
@@ -33,8 +34,9 @@ import axios from "axios";
 /* Dynamic dropdown */
 import FormSongSearch from "./FormSongSearch";
 
-const FormCreateSonglist = ({ id }) => {
+const FormCreateSonglist = ({ playlist, users, id }) => {
   const [currentId, setCurrentId] = useState(id);
+  const [myFlag, setmyFlag] = useState(false);
   const [createMySonglist, setCreateMySonglist] = useState({
     artist: "",
     title: "",
@@ -44,7 +46,26 @@ const FormCreateSonglist = ({ id }) => {
     associatedPlaylist: "",
   });
 
-  const user = JSON.parse(localStorage.getItem("profile"));
+  const [playlistContributor, setPlaylistContributor] = useState({
+    contributor: [],
+  });
+
+  useEffect(() => {
+    if (playlist) setPlaylistContributor(playlist);
+  }, [playlist]);
+
+  const [myContributedPlaylists, setMyContributedPlaylists] = useState({
+    contributedPlaylists: [],
+  });
+
+  useEffect(() => {
+    if (users) setMyContributedPlaylists(users);
+  }, [users]);
+
+  useEffect(() => {
+    // console.log(myFlag);
+  }, [myFlag]);
+
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -59,45 +80,33 @@ const FormCreateSonglist = ({ id }) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // setCreateMySonglist({
-    //   ...createMySonglist,
-    //   associatedPlaylist: currentId,
-    // });
-    // setCreateMySonglist({
-    //   ...createMySonglist,
-    //   contributor: user?.result?.name,
-    // });
-    console.log(user?.result?.name);
+  const handleSubmit = () => {
+    // e.preventDefault();
     dispatch(
       addSong(currentId, {
         ...createMySonglist,
-        contributor: user?.result?.name,
+        contributor: users.name,
         associatedPlaylist: currentId,
       })
     );
-    clear();
-    history.push(`/musicPlaylists/${currentId}`);
-  };
-
-  /* Add Song Dialog Select */
-  const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
-
-    /* I don't think I need this anymore */
-  const handleChange = (event) => {
-    setAge(Number(event.target.value) || '');
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason !== 'backdropClick') {
-      setOpen(false);
+    // RIght here is the code for the current contributed playlists. RN I was just checking if it will update
+    // Once the user adds a song. But I need to make it so it only updates once the user inputs to a playlist they haven't contributed
+    // to before.
+    const alreadyContributed = 
+      myContributedPlaylists.contributedPlaylists.find(p => p == playlist._id);
+    if (!alreadyContributed) {
+      dispatch(
+        updateUser(users._id, {
+          ...myContributedPlaylists,
+          contributedPlaylists: [
+            ...myContributedPlaylists.contributedPlaylists,
+            currentId,
+          ],
+        })
+      );
     }
+    
+    // clear(e);
   };
 
   const handleSongSelect = songDetail => {
@@ -116,7 +125,7 @@ const FormCreateSonglist = ({ id }) => {
           {(popupState) => (
             <React.Fragment>
               <IconButton
-                size="large"
+                size="medium"
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
@@ -200,7 +209,7 @@ const FormCreateSonglist = ({ id }) => {
                   variant="contained"
                   // color="primary"
                   size="large"
-                  type="submit"
+                  // type="submit"
                   onClick={handleSubmit}
                   fullWidth
                 >

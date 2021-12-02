@@ -1,15 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { experimentalStyled as styled } from "@mui/material/styles";
-import { Paper, Grid, Typography, Card } from "@material-ui/core";
+import {
+  Paper,
+  Grid,
+  Typography,
+  Button,
+  Card,
+  CircularProgress,
+} from "@material-ui/core";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 import useStyles from "./styles";
 import { CardMedia } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import Select from "@mui/material/Select";
 import memories from "../../../../images/memories.png";
 import FormCreateSonglist from "../../../Form/FormCreateSonglist";
+import FormAddPicture from "../../../Form/FormAddPicture";
 import { useSelector, useDispatch } from "react-redux";
+import CommentSection from "./CommentSection";
+import TextField from "@mui/material/TextField";
 import { useParams, useHistory } from "react-router-dom";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { Pagination, PaginationItem } from "@material-ui/lab";
-import { getSonglists } from "../../../../actions/musicPlaylist";
+import { getUser, getUsers } from "../../../../actions/userProfile";
+import {
+  addContributor,
+  getPlaylist,
+  getPlaylists,
+  getSonglists,
+} from "../../../../actions/musicPlaylist";
 
 const columns = [
   // { field: "id", headerName: "ID", width: 150 },
@@ -33,13 +55,17 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const MusicPlaylist = (props) => {
-  // const [musicplaylist, musicplaylist1] = useSelector(
-  //   (state) => state.musicPlaylists
-  // );
-  const classes = useStyles();
   const { id } = useParams();
+  const { playlists, isLoading } = useSelector((state) => state.musicPlaylists);
+  const my_user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [id, dispatch]);
+
+  const classes = useStyles();
   const [pageSize, setPageSize] = useState(5);
+  const [personName, setPersonName] = React.useState([]);
   const [editRowsModel, setEditRowsModel] = useState({});
   const handleEditRowsModelChange = React.useCallback((model) => {
     setEditRowsModel(model);
@@ -48,8 +74,29 @@ const MusicPlaylist = (props) => {
   useEffect(() => {
     dispatch(getSonglists(id));
   }, [id, dispatch]);
-  const songlists = useSelector((state) => state.songlist);
 
+  useEffect(() => {
+    dispatch(getPlaylists(id));
+  }, [id, dispatch]);
+
+  const songlists = useSelector((state) => state.songlist);
+  const playlist = id ? playlists.find((p) => p._id === id) : null;
+  const users = useSelector((state) => state.users);
+  const user = my_user?.result?._id
+    ? users.find((i) => i._id === my_user?.result?._id)
+    : null;
+
+  const handleChange = (value) => {
+    console.log(value);
+  };
+
+  if (isLoading) {
+    return (
+      <Paper elevation={6} className={classes.loadingPaper}>
+        <CircularProgress size="7em" />
+      </Paper>
+    );
+  }
   const rows1 = songlists.map((songlist) => {
     return {
       id: songlist._id,
@@ -61,8 +108,30 @@ const MusicPlaylist = (props) => {
     };
   });
 
+  const name_vals = users.map((one_user) => {
+    return {
+      label: one_user.name,
+      id: one_user._id,
+    };
+  });
+  const handleAddUser = (newValue) => {
+    dispatch(addContributor(my_user?.result?._id, id, newValue.id));
+  };
   return (
     <Paper>
+      {/* This whole segment from lines 124-135 should only show if playlist.creator is equal to my_user?.result?._id created on line 60*/}
+      <Autocomplete
+        value={personName}
+        onChange={(event, newValue) => {
+          setPersonName(newValue);
+          // handleAddUser(newValue);
+        }}
+        id="controllable-states-demo"
+        options={name_vals}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Name" />}
+      />
+      <Button onClick={() => handleAddUser(personName)}> Add User</Button>
       <div style={{ height: 400, width: props.width }}>
         <DataGrid
           rows={rows1}
@@ -74,42 +143,25 @@ const MusicPlaylist = (props) => {
           editRowsModel={editRowsModel}
           onEditRowsModelChange={handleEditRowsModelChange}
         />
-
-        <FormCreateSonglist id={id} />
-        {/* <Typography variant="h1" color="text.secondary" align="center">
-        FlashBack
-      </Typography> */}
+        <CommentSection playlist={playlist} />
+        {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
+        If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
+        <FormCreateSonglist playlist={playlist} users={user} id={id} />
+        <FormAddPicture playlist={playlist} id={id} />
         <Grid
           className={classes.mainContainer}
           container
           spacing={3}
           alignItems="stretch"
         >
-          {Array.from(Array(12)).map((_, index) => (
+          {Array.from(playlist.selectedFiles).map((_, index) => (
             <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
               <Card className={classes.card} raised elevation={6}>
-                <CardMedia className={classes.media} image={memories} />
+                <CardMedia className={classes.media} image={_} />
               </Card>
-              {/* <Item>
-            <img src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" />
-           </Item> */}
             </Grid>
           ))}
         </Grid>
-        {/* <Stack spacing={2} alignItems="center">
-        <Pagination
-          align="center"
-          count={10}
-          renderItem={(item) => (
-            <PaginationItem
-              // component={Link}
-              to={`/posts?page=${1}`}
-              components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-              {...item}
-            />
-          )}
-        />
-      </Stack> */}
       </div>
     </Paper>
   );

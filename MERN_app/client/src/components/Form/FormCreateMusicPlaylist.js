@@ -73,7 +73,10 @@ const FormCreateMusicPlaylist = () => {
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
-              setCreateMyPlaylist({ ...createMyPlaylist, selectedFile: base64 })
+              setCreateMyPlaylist({
+                ...createMyPlaylist,
+                selectedMainFile: base64,
+              })
             }
           ></FileBase>
         </div>

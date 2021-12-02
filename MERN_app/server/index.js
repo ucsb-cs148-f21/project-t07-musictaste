@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/user.js";
 import playlistRoutes from "./routes/musicPlaylist.js";
+import userProfileRoutes from "./routes/userProfile.js";
 const app = express();
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);
 app.use("/musicPlaylists", playlistRoutes);
+app.use("/users", userProfileRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello to Music Taste API!");

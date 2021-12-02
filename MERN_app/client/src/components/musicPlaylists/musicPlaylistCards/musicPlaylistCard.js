@@ -5,18 +5,23 @@ import {
   CardMedia,
   CardContent,
   CardActions,
+  Button,
   Collapse,
   Typography,
   ButtonBase,
 } from "@material-ui/core";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import { styled } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import useStyles from "./styles";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { deletePlaylist, likePlaylist } from "../../../actions/musicPlaylist";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,9 +39,41 @@ const MusicPlaylistCards = ({ musicplaylist, setCurrentId }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const Likes = () => {
+    if (musicplaylist.likes.length > 0) {
+      return musicplaylist.likes.find(
+        (musicplaylist) =>
+          musicplaylist === (user?.result?.googleId || user?.result?._id)
+      ) ? (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;
+          {musicplaylist.likes.length > 2
+            ? `You and ${musicplaylist.likes.length - 1} others`
+            : `${musicplaylist.likes.length} like${
+                musicplaylist.likes.length > 1 ? "s" : ""
+              }`}
+        </>
+      ) : (
+        <>
+          <ThumbUpAltOutlined fontSize="small" />
+          &nbsp;{musicplaylist.likes.length}{" "}
+          {musicplaylist.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
   const openPost = (e) => {
     history.push(`/musicPlaylists/${musicplaylist._id}`);
   };
@@ -63,6 +100,27 @@ const MusicPlaylistCards = ({ musicplaylist, setCurrentId }) => {
           </Typography>
         </CardContent>
       </ButtonBase>
+      <CardActions className={classes.cardActions}>
+        <Button
+          size="small"
+          color="primary"
+          disabled={!user?.result}
+          onClick={() => dispatch(likePlaylist(musicplaylist._id))}
+        >
+          <Likes />
+        </Button>
+        {(user?.result?.googleId === musicplaylist?.creator ||
+          user?.result?._id === musicplaylist?.creator) && (
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(deletePlaylist(musicplaylist._id))}
+          >
+            <DeleteIcon fontSize="small" />
+            Delete
+          </Button>
+        )}
+      </CardActions>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
           <FavoriteIcon />
