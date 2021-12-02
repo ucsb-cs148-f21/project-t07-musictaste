@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/musicPlaylists" exact component={HomeMusicPlaylist} />
           <Route path="/musicPlaylists/:id" exact component={musicPlaylist} />
           <Route
-            path="/musicPlaylists/Form"
+            path="/CreateMusicPlaylist/Form"
             exact
             component={FormCreateMusicPlaylist}
           />

@@ -33,7 +33,18 @@ export const getPlaylists = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
+export const getPlaylist = async (req, res) => {
+  const { id } = req.params;
+  const { page } = req.query;
+  try {
+    const playlist = await musicPlaylist.findById(id);
+    console.log("This is one console log");
+    console.log(playlist);
+    res.status(200).json(playlist);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 export const getSonglists = async (req, res) => {
   try {
     const songlist = await songPlaylist.find({
@@ -44,6 +55,7 @@ export const getSonglists = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
 export const addSong = async (req, res) => {
   const { id } = req.params;
   const songlist = req.body;
@@ -58,4 +70,76 @@ export const addSong = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
+};
+
+export const addToGallery = async (req, res) => {
+  const { id } = req.params;
+  const picture = req.body;
+  const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, picture, {
+    new: true,
+  });
+  res.status(200).json(updatedPlaylist);
+};
+
+// export const addContributor = async (req, res) => {
+//   console.log(req);
+//   const { id } = req.params;
+//   const user = req.body;
+
+// const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, picture, {
+//   new: true,
+// });
+// res.status(200).json(updatedPlaylist);
+// };
+
+// Need to implement this next
+
+export const likePlaylist = async (req, res) => {
+  const { id } = req.params;
+
+  if (!req.userId) {
+    return res.json({ message: "Unauthenticated" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send("No post with that id");
+
+  const playlist = await musicPlaylist.findById(id);
+
+  const index = playlist.likes.findIndex((id) => id === String(req.userId));
+  if (index === -1) {
+    playlist.likes.push(req.userId);
+  } else {
+    playlist.likes = playlist.likes.filter((id) => id !== String(req.userId));
+  }
+  const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, playlist, {
+    new: true,
+  });
+
+  res.status(200).json(updatedPlaylist);
+};
+
+export const deletePlaylist = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send("No post with that id");
+
+  await musicPlaylist.findByIdAndRemove(id);
+
+  res.json({ message: "Playlist Delted Successfully" });
+};
+
+export const commentPlaylist = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  const playlist = await musicPlaylist.findById(id);
+  playlist.comments.push(value);
+
+  const updatedPlaylist = await musicPlaylist.findByIdAndUpdate(id, playlist, {
+    new: true,
+  });
+
+  res.status(200).json(updatedPlaylist);
 };

@@ -45,7 +45,7 @@ const Navbar = () => {
       className={classes.appBar}
       position="static"
       color="inherit"
-      elevation="5"
+      elevation={5}
       square={false}
     >
       {user ? (
@@ -55,7 +55,7 @@ const Navbar = () => {
               {(popupState) => (
                 <React.Fragment>
                   <IconButton
-                    size="large"
+                    size="medium"
                     edge="start"
                     color="inherit"
                     aria-label="open drawer"
@@ -110,7 +110,7 @@ const Navbar = () => {
               {(popupState) => (
                 <React.Fragment>
                   <IconButton
-                    size="large"
+                    size="medium"
                     edge="start"
                     color="inherit"
                     aria-label="open drawer"
