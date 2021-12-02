@@ -20,7 +20,7 @@ const User = () => {
   }, [id, dispatch]);
   useEffect(() => {
     dispatch(getPlaylists());
-  }, [id, dispatch])
+  }, [id, dispatch]);
   // useEffect(() => {
   //   console.log("This is working rn");
   //   window.addEventListener("beforeunload", getUser(id));

@@ -85,7 +85,7 @@ const MusicPlaylist = (props) => {
   const user = my_user?.result?._id
     ? users.find((i) => i._id === my_user?.result?._id)
     : null;
-
+  
   const handleChange = (value) => {
     console.log(value);
   };
@@ -117,10 +117,17 @@ const MusicPlaylist = (props) => {
   const handleAddUser = (newValue) => {
     dispatch(addContributor(my_user?.result?._id, id, newValue.id));
   };
+
+  const permissionValid = users.filter(element => playlist.contributor.includes(element._id));
+  const userPermissionValid = permissionValid.find(p => p._id == my_user?.result?._id);
+  console.log(permissionValid)
+  console.log(my_user?.result?._id)
+  console.log(userPermissionValid);
   return (
     <Paper>
-      {/* This whole segment from lines 124-135 should only show if playlist.creator is equal to my_user?.result?._id created on line 60*/}
-      <Autocomplete
+      {/*This has to be changed to work on unique ids but rn it only works on names */}
+      {playlist.name === my_user?.result?.name && (
+        <Autocomplete
         value={personName}
         onChange={(event, newValue) => {
           setPersonName(newValue);
@@ -131,6 +138,8 @@ const MusicPlaylist = (props) => {
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Name" />}
       />
+      )
+      }
       <Button onClick={() => handleAddUser(personName)}> Add User</Button>
       <div style={{ height: 400, width: props.width }}>
         <DataGrid
@@ -146,8 +155,13 @@ const MusicPlaylist = (props) => {
         <CommentSection playlist={playlist} />
         {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
         If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
-        <FormCreateSonglist playlist={playlist} users={user} id={id} />
-        <FormAddPicture playlist={playlist} id={id} />
+        {userPermissionValid && (
+          <div>
+            <FormCreateSonglist playlist={playlist} users={user} id={id} />
+            <FormAddPicture playlist={playlist} id={id} />
+          </div>
+        )}
+        
         <Grid
           className={classes.mainContainer}
           container
