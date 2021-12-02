@@ -88,14 +88,11 @@ const MusicPlaylist = (props) => {
   const { users, isLoadingU } = useSelector((state) => state.users);
   const songlists = useSelector((state) => state.songlist);
   const playlist = id ? playlists.find((p) => p._id === id) : null;
-  let user = [];
-  if (isLoadingU) {
-    user = my_user?.result?._id
-      ? users.find((i) => i._id === my_user?.result?._id)
-      : null;
-  } else {
-    user = [];
-  }
+
+  const user = my_user?.result?._id
+    ? users.find((i) => i._id === my_user?.result?._id)
+    : null;
+
   if (isLoading || isLoadingU) {
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
@@ -103,6 +100,12 @@ const MusicPlaylist = (props) => {
       </Paper>
     );
   }
+  const permissionValid = users.filter((element) =>
+    playlist.contributor.includes(element._id)
+  );
+  const userPermissionValid = permissionValid.find(
+    (p) => p._id == my_user?.result?._id
+  );
   // const rows1 = songlists.map((songlist) => {
   //   return {
   //     id: songlist._id,
@@ -126,7 +129,9 @@ const MusicPlaylist = (props) => {
   return (
     <Paper>
       {/*This whole segment from lines 124-135 should only show if playlist.creator is equal to my_user?.result?._id created on line 60*/}
-      <MusicPlaylistAddUser users={users} id={id} my_user={my_user} />
+      {playlist.name === my_user?.result?.name && (
+        <MusicPlaylistAddUser users={users} id={id} my_user={my_user} />
+      )}
       <div style={{ height: 400, width: props.width }}>
         <MusicPlaylistDataGrid songlists={songlists} />
         {/* <DataGrid
@@ -142,8 +147,12 @@ const MusicPlaylist = (props) => {
         <CommentSection playlist={playlist} />
         {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
         If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
-        <FormCreateSonglist playlist={playlist} users={user} id={id} />
-        <FormAddPicture playlist={playlist} id={id} />
+        {userPermissionValid && (
+          <div>
+            <FormCreateSonglist playlist={playlist} user={user} id={id} />
+            <FormAddPicture playlist={playlist} id={id} />
+          </div>
+        )}
         <MusicPlaylistGallery playlists={playlists} id={id} />
         {/* <Grid
           className={classes.mainContainer}
