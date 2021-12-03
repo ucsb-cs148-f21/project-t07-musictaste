@@ -36,26 +36,6 @@ import MusicPlaylistAddUser from "./musicPlaylistAddUser";
 import MusicPlaylistDataGrid from "./musicPlaylistDataGrid";
 import MusicPlaylistGallery from "./musicPlaylistGallery";
 
-// const columns = [
-//   // { field: "id", headerName: "ID", width: 150 },
-//   { field: "artist", headerName: "Artist", width: 250, editable: true },
-//   { field: "title", headerName: "Title", width: 250, editable: true },
-//   { field: "duration", headerName: "Duration", width: 300, editable: true },
-//   { field: "genre", headerName: "Genre", width: 200, editable: true },
-//   {
-//     field: "contributor",
-//     headerName: "Contributor",
-//     width: 250,
-//     editable: false,
-//   },
-// ];
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   padding: theme.spacing(2),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-// }));
 
 const MusicPlaylist = (props) => {
   const { id } = useParams();
@@ -77,12 +57,6 @@ const MusicPlaylist = (props) => {
   }, [id, dispatch]);
 
   const classes = useStyles();
-  // const [personName, setPersonName] = React.useState([]);
-  // const [pageSize, setPageSize] = useState(5);
-  // const [editRowsModel, setEditRowsModel] = useState({});
-  // const handleEditRowsModelChange = React.useCallback((model) => {
-  //   setEditRowsModel(model);
-  // }, []);
 
   const { playlists, isLoading } = useSelector((state) => state.musicPlaylists);
   const { users, isLoadingU } = useSelector((state) => state.users);
@@ -107,25 +81,7 @@ const MusicPlaylist = (props) => {
   const userPermissionValid = permissionValid.find(
     (p) => p._id == my_user?.result?._id
   );
-  // const rows1 = songlists.map((songlist) => {
-  //   return {
-  //     id: songlist._id,
-  //     artist: songlist.artist,
-  //     title: songlist.title,
-  //     duration: songlist.duration,
-  //     genre: songlist.genre,
-  //     contributor: songlist.contributor,
-  //   };
-  // });
-  // const name_vals = users.map((one_user) => {
-  //   return {
-  //     label: one_user.name,
-  //     id: one_user._id,
-  //   };
-  // });
-  // const handleAddUser = (newValue) => {
-  //   dispatch(addContributor(my_user?.result?._id, id, newValue.id));
-  // };
+
   return (
     <React.Fragment>
       {(userPermissionValid || playlist.name === my_user?.result?.name) && (
@@ -139,51 +95,22 @@ const MusicPlaylist = (props) => {
             </Grid>
 
             <Grid item xs={4} sm={4} md={4} lg={4}>
-            {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
-              If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
             {(userPermissionValid || playlist.name === my_user?.result?.name) && (
               <FormCreateSonglist playlist={playlist} user={user} id={id} />
             )}
             </Grid>
-
-            {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
-              If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
-            {/* {(userPermissionValid || playlist.name === my_user?.result?.name) && (
-              <div>
-                <FormCreateSonglist playlist={playlist} user={user} id={id} />
-                <FormAddPicture playlist={playlist} id={id} />
-              </div>
-            )} */}
           </Grid>
         </Paper>
       )}
-      {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
-        If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
-      {/* {(userPermissionValid || playlist.name === my_user?.result?.name) && (
-        <div>
-          <FormCreateSonglist playlist={playlist} user={user} id={id} />
-          <FormAddPicture playlist={playlist} id={id} />
-        </div>
-      )} */}
   <Paper className={classes.segment}>
       <div style={{ height: 400, width: props.width }}>
         <MusicPlaylistDataGrid songlists={songlists} />
-        {/* <DataGrid
-          rows={rows1}
-          columns={columns}
-          pageSize={pageSize}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
-          pagination
-          editRowsModel={editRowsModel}
-          onEditRowsModelChange={handleEditRowsModelChange}
         /> */}
-        </div>
-        </Paper>
+       </div>
+   </Paper>
         
-          <CommentSection playlist={playlist} />
-          {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
-        If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
+      <CommentSection playlist={playlist} />
+
       {(userPermissionValid || playlist.name === my_user?.result?.name) && (
         <Grid container>
           <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -211,19 +138,6 @@ const MusicPlaylist = (props) => {
         alignItems="stretch"
       />
       )}
-        {/* <MusicPlaylistGallery playlists={playlists} id={id}
-          className={classes.mainContainer}
-          container
-          spacing={3}
-          alignItems="stretch"
-        /> */}
-          {/* {Array.from(playlist.selectedFiles).map((_, index) => (
-            <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
-              <Card className={classes.card} raised elevation={6}>
-                <CardMedia className={classes.media} image={_} />
-              </Card>
-            </Grid>
-          ))} */}
     </React.Fragment>
   );
 };
