@@ -33,9 +33,13 @@ const Navbar = () => {
 
   const openUser = () => history.push(`/users/${user?.result?._id}`);
   // Need to handle when user is null -> lead to 404 error
+
   const blog = () => {
     history.push("/posts");
   };
+
+  const home = () => history.push("/");
+
   useEffect(() => {
     const token = user?.token;
     setUser(JSON.parse(localStorage.getItem("profile")));
@@ -45,41 +49,20 @@ const Navbar = () => {
       className={classes.appBar}
       position="static"
       color="inherit"
-      elevation={5}
+      elevation={0}
       square={false}
     >
       {user ? (
         <>
           <div className={classes.brandContainer}>
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
-                <React.Fragment>
-                  <IconButton
-                    size="medium"
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                    sx={{ mr: 2 }}
-                    {...bindTrigger(popupState)}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={openUser}>Profile</MenuItem>
-                    <MenuItem onClick={blog}>Blogs</MenuItem>
-                    <MenuItem onClick={logout}>Logout</MenuItem>
-                  </Menu>
-                </React.Fragment>
-              )}
-            </PopupState>
             <Typography
               component={Link}
               to="/"
               className={classes.heading}
               variant="h2"
-              align="center"
+              // align="center"
             >
-              Music Playlist
+              Harmony
             </Typography>
             {/* <img
               className={classes.image}
@@ -89,10 +72,46 @@ const Navbar = () => {
             /> */}
           </div>
           <Toolbar className={classes.toolbar}>
-            <div className={classes.profile}>
-              <Typography className={classes.userName} variant="h6">
-                {user.result.name}
-              </Typography>
+            <div className={classes.rightSide}>
+
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <IconButton className={classes.toolbarElement}>
+                        <Typography className={classes.toolbarElementTypography} {...bindTrigger(popupState)} variant="h6">
+                          Explore
+                        </Typography>
+                      </IconButton>
+                    <Menu  {...bindMenu(popupState)} >
+                      <MenuItem onClick={blog} >Blogs</MenuItem>
+                      <MenuItem onClick={home} >Playlists</MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <IconButton className={classes.toolbarElement}>
+                        <Typography className={classes.toolbarElementTypography} {...bindTrigger(popupState)} variant="h6">
+                          {user.result.name}
+                        </Typography>
+                      </IconButton>
+                    <Menu {...bindMenu(popupState)}>
+                      <MenuItem onClick={openUser} >Profile</MenuItem>
+                      <MenuItem onClick={logout} >Log Out</MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+
+              {/* <IconButton className={classes.toolbarElement}>
+                <Typography className={classes.toolbarElementTypography} variant="h6">
+                  Profile
+                </Typography>
+              </IconButton> */}
+
               <Avatar
                 className={classes.purple}
                 alt={user.result.name}
@@ -106,44 +125,42 @@ const Navbar = () => {
       ) : (
         <>
           <div className={classes.brandContainer}>
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
-                <React.Fragment>
-                  <IconButton
-                    size="medium"
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                    sx={{ mr: 2 }}
-                    {...bindTrigger(popupState)}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={blog}>Blogs</MenuItem>
-                    <MenuItem component={Link} to="/auth" variant="contained">
-                      Sign In
-                    </MenuItem>
-                  </Menu>
-                </React.Fragment>
-              )}
-            </PopupState>
             <Typography
               component={Link}
               to="/"
               className={classes.heading}
               variant="h2"
-              align="center"
+              // align="center"
             >
-              Music Playlist
+              Harmony
             </Typography>
-            {/* <img
-              className={classes.image}
-              src={musicIcon}
-              alt="musicIcon"
-              height="60"
-            /> */}
-          </div>
+            </div>
+
+            <Toolbar className={classes.toolbar}>
+              <div className={classes.rightSide}>
+                <PopupState variant="popover" popupId="demo-popup-menu">
+                    {(popupState) => (
+                      <React.Fragment>
+                        <IconButton className={classes.toolbarElement}>
+                            <Typography className={classes.toolbarElementTypography} {...bindTrigger(popupState)} variant="h6">
+                              Explore
+                            </Typography>
+                          </IconButton>
+                        <Menu  {...bindMenu(popupState)} >
+                          <MenuItem onClick={blog} >Blogs</MenuItem>
+                          <MenuItem onClick={home} >Playlists</MenuItem>
+                        </Menu>
+                      </React.Fragment>
+                    )}
+                  </PopupState>
+
+                <IconButton className={classes.toolbarElement} component={Link} to="/auth" variant="contained">
+                    <Typography className={classes.toolbarElementTypography} variant="h6">
+                      Sign In
+                    </Typography>
+                  </IconButton>
+                </div>
+            </Toolbar>
         </>
       )}
     </AppBar>

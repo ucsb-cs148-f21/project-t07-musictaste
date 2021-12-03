@@ -74,4 +74,11 @@ export default makeStyles({
     display: "block",
     textAlign: "initial",
   },
+  segment: {
+    marginBottom: "25px",
+    padding: "15px",
+  },
+  comment: {
+    padding: "10px 15px 10px 15px",
+  }
 });
