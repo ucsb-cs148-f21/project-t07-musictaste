@@ -36,26 +36,6 @@ import MusicPlaylistAddUser from "./musicPlaylistAddUser";
 import MusicPlaylistDataGrid from "./musicPlaylistDataGrid";
 import MusicPlaylistGallery from "./musicPlaylistGallery";
 
-// const columns = [
-//   // { field: "id", headerName: "ID", width: 150 },
-//   { field: "artist", headerName: "Artist", width: 250, editable: true },
-//   { field: "title", headerName: "Title", width: 250, editable: true },
-//   { field: "duration", headerName: "Duration", width: 300, editable: true },
-//   { field: "genre", headerName: "Genre", width: 200, editable: true },
-//   {
-//     field: "contributor",
-//     headerName: "Contributor",
-//     width: 250,
-//     editable: false,
-//   },
-// ];
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   padding: theme.spacing(2),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-// }));
 
 const MusicPlaylist = (props) => {
   const { id } = useParams();
@@ -77,12 +57,6 @@ const MusicPlaylist = (props) => {
   }, [id, dispatch]);
 
   const classes = useStyles();
-  // const [personName, setPersonName] = React.useState([]);
-  // const [pageSize, setPageSize] = useState(5);
-  // const [editRowsModel, setEditRowsModel] = useState({});
-  // const handleEditRowsModelChange = React.useCallback((model) => {
-  //   setEditRowsModel(model);
-  // }, []);
 
   const { playlists, isLoading } = useSelector((state) => state.musicPlaylists);
   const { users, isLoadingU } = useSelector((state) => state.users);
@@ -107,25 +81,7 @@ const MusicPlaylist = (props) => {
   const userPermissionValid = permissionValid.find(
     (p) => p._id == my_user?.result?._id
   );
-  // const rows1 = songlists.map((songlist) => {
-  //   return {
-  //     id: songlist._id,
-  //     artist: songlist.artist,
-  //     title: songlist.title,
-  //     duration: songlist.duration,
-  //     genre: songlist.genre,
-  //     contributor: songlist.contributor,
-  //   };
-  // });
-  // const name_vals = users.map((one_user) => {
-  //   return {
-  //     label: one_user.name,
-  //     id: one_user._id,
-  //   };
-  // });
-  // const handleAddUser = (newValue) => {
-  //   dispatch(addContributor(my_user?.result?._id, id, newValue.id));
-  // };
+
   return (
     <Paper>
       {/*This whole segment from lines 124-135 should only show if playlist.creator is equal to my_user?.result?._id created on line 60*/}
@@ -135,16 +91,6 @@ const MusicPlaylist = (props) => {
 
       <div style={{ height: 400, width: props.width }}>
         <MusicPlaylistDataGrid songlists={songlists} />
-        {/* <DataGrid
-          rows={rows1}
-          columns={columns}
-          pageSize={pageSize}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
-          pagination
-          editRowsModel={editRowsModel}
-          onEditRowsModelChange={handleEditRowsModelChange}
-        /> */}
         <CommentSection playlist={playlist} />
         {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
         If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
