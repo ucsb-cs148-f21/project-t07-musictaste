@@ -245,7 +245,8 @@ const FormCreateSonglist = ({ playlist, user, id }) => {
               <IconButton
                 size="medium"
                 edge="start"
-                color="inherit"
+                // color="inherit"
+                color="#ffffff"
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
                 {...bindTrigger(popupState)}

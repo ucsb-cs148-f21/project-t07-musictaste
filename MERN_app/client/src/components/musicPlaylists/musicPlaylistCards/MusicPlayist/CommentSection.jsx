@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Typography, TextField, Button } from "@material-ui/core/";
+import { Typography, TextField, Button, Paper } from "@material-ui/core/";
 import { useDispatch } from "react-redux";
 
 import { commentPlaylist } from "../../../../actions/musicPlaylist";
@@ -28,20 +28,9 @@ const CommentSection = ({ playlist }) => {
     // <h1>Comment Section</h1>
     <div>
       <div className={classes.commentsOuterContainer}>
-        <div className={classes.commentsInnerContainer}>
-          <Typography gutterBottom variant="h6">
-            Comments
-          </Typography>
-          {comments?.map((c, i) => (
-            <Typography key={i} gutterBottom variant="subtitle1">
-              <strong>{c.split(": ")[0]}</strong>
-              {c.split(":")[1]}
-            </Typography>
-          ))}
-          <div ref={commentsRef} />
-        </div>
-        {user?.result.name && (
-          <div style={{ width: "70%" }}>
+      {user?.result.name && (
+          <Paper className={classes.segment}>
+          <div style={{ width: "100%" }}>
             <Typography gutterBottom variant="h6">
               Write a comment
             </Typography>
@@ -66,7 +55,24 @@ const CommentSection = ({ playlist }) => {
               Comment
             </Button>
           </div>
+          </Paper>
         )}
+      <Paper className={classes.segment}>
+        <div className={classes.commentsInnerContainer}>
+          <Typography gutterBottom variant="h6">
+            Comments
+          </Typography>
+          {comments?.map((c, i) => (
+            <Paper className={classes.comment} variant="outlined">
+            <Typography key={i} gutterBottom variant="subtitle1">
+              <strong>{c.split(": ")[0]}</strong>
+              {c.split(":")[1]}
+            </Typography>
+            </Paper>
+          ))}
+          <div ref={commentsRef} />
+        </div>
+      </Paper>
       </div>
     </div>
   );
