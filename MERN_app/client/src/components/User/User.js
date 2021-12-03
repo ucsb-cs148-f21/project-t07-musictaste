@@ -6,6 +6,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 // import Form from "../Form/Form";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,7 +24,7 @@ import PostsHome from "../Posts/Post/PostsHome/Home";
 import Posts from "../Posts/Post/Post";
 import useStyles2 from "../Form/styles";
 import { useHistory } from "react-router-dom";
-
+import theme from "../../theme";
 const User = () => {
   const history = useHistory();
   const classes2 = useStyles2();
@@ -97,7 +98,9 @@ const User = () => {
         >
           <Grid item container direction="column" xs={12} md={8} spacing={1}>
             <Grid item>
-              <Typography variant="h4">My Blog Posts</Typography>
+              <ThemeProvider theme={theme}>
+              <Typography variant="h4"><b>My Blog Posts</b></Typography>
+              </ThemeProvider>
             </Grid>
             <Grid item>
                 {elements}

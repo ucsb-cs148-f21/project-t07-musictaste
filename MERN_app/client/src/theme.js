@@ -58,7 +58,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: { raleway, openSans, rubik, almarai},
+    fontFamily: { raleway, openSans, rubik, almarai, rubik, rubik, rubik, rubik},
   },
 });
 

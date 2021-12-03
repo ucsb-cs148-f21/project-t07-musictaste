@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-
+const rubik = "'Rubik', rubik";
 export default makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    backgroundColor: "#bed1d8",
+    backgroundColor: "#c0b7b1",
     // backgroundColor: "#ffff00",
     // marginTop: "15%",
     // minWidth: "20em",
@@ -44,6 +44,9 @@ export default makeStyles((theme) => ({
     marginRight: "0%",
     textAlign: "center",
   },
+  typography: {
+    fontFamiyl: {rubik}
+  }
   // temporary: {
   //   fontFamily: theme.typography.fontFamily.openSans,
   // }
