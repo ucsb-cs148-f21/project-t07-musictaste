@@ -155,13 +155,12 @@ const MusicPlaylist = (props) => {
             <FormAddPicture playlist={playlist} id={id} />
           </div>
         )}
-        <MusicPlaylistGallery playlists={playlists} id={id} />
-
+        <MusicPlaylistGallery playlists={playlists} id={id}
           className={classes.mainContainer}
           container
           spacing={3}
           alignItems="stretch"
-        >
+        />
           {Array.from(playlist.selectedFiles).map((_, index) => (
             <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
               <Card className={classes.card} raised elevation={6}>
@@ -169,7 +168,6 @@ const MusicPlaylist = (props) => {
               </Card>
             </Grid>
           ))}
-        </Grid> */}
       </div>
     </Paper>
   );
