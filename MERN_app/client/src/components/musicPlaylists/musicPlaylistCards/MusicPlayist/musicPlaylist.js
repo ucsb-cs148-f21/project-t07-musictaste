@@ -94,6 +94,7 @@ const MusicPlaylist = (props) => {
     : null;
 
   if (isLoading || isLoadingU) {
+
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
         <CircularProgress size="7em" />
@@ -116,7 +117,6 @@ const MusicPlaylist = (props) => {
   //     contributor: songlist.contributor,
   //   };
   // });
-
   // const name_vals = users.map((one_user) => {
   //   return {
   //     label: one_user.name,
@@ -132,6 +132,7 @@ const MusicPlaylist = (props) => {
       {playlist.name === my_user?.result?.name && (
         <MusicPlaylistAddUser users={users} id={id} my_user={my_user} />
       )}
+
       <div style={{ height: 400, width: props.width }}>
         <MusicPlaylistDataGrid songlists={songlists} />
         {/* <DataGrid
@@ -149,12 +150,13 @@ const MusicPlaylist = (props) => {
         If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
         {userPermissionValid && (
           <div>
+
             <FormCreateSonglist playlist={playlist} user={user} id={id} />
             <FormAddPicture playlist={playlist} id={id} />
           </div>
         )}
         <MusicPlaylistGallery playlists={playlists} id={id} />
-        {/* <Grid
+
           className={classes.mainContainer}
           container
           spacing={3}
