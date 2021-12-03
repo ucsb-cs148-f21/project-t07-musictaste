@@ -105,7 +105,6 @@ const MusicPlaylist = (props) => {
   <Paper className={classes.segment}>
       <div style={{ height: 400, width: props.width }}>
         <MusicPlaylistDataGrid songlists={songlists} />
-        /> */}
        </div>
    </Paper>
         
