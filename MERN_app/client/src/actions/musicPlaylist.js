@@ -31,7 +31,7 @@ export const getPlaylists = (id) => async (dispatch) => {
     dispatch({ type: START_LOADING });
     console.log("We returning playlistss");
     const { data } = await api.fetchPlaylists(id);
-    // console.log(data);
+    console.log(data);
     dispatch({ type: FETCH_ALL_PLAYLISTS, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {

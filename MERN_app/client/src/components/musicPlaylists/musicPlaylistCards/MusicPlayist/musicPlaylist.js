@@ -32,117 +32,110 @@ import {
   getPlaylists,
   getSonglists,
 } from "../../../../actions/musicPlaylist";
+import MusicPlaylistAddUser from "./musicPlaylistAddUser";
+import MusicPlaylistDataGrid from "./musicPlaylistDataGrid";
+import MusicPlaylistGallery from "./musicPlaylistGallery";
 
-const columns = [
-  // { field: "id", headerName: "ID", width: 150 },
-  { field: "artist", headerName: "Artist", width: 250, editable: true },
-  { field: "title", headerName: "Title", width: 250, editable: true },
-  { field: "duration", headerName: "Duration", width: 300, editable: true },
-  { field: "genre", headerName: "Genre", width: 200, editable: true },
-  {
-    field: "contributor",
-    headerName: "Contributor",
-    width: 250,
-    editable: false,
-  },
-];
+// const columns = [
+//   // { field: "id", headerName: "ID", width: 150 },
+//   { field: "artist", headerName: "Artist", width: 250, editable: true },
+//   { field: "title", headerName: "Title", width: 250, editable: true },
+//   { field: "duration", headerName: "Duration", width: 300, editable: true },
+//   { field: "genre", headerName: "Genre", width: 200, editable: true },
+//   {
+//     field: "contributor",
+//     headerName: "Contributor",
+//     width: 250,
+//     editable: false,
+//   },
+// ];
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   ...theme.typography.body2,
+//   padding: theme.spacing(2),
+//   textAlign: "center",
+//   color: theme.palette.text.secondary,
+// }));
 
 const MusicPlaylist = (props) => {
   const { id } = useParams();
-  const { playlists, isLoading } = useSelector((state) => state.musicPlaylists);
   const my_user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUsers());
-  }, [id, dispatch]);
-
-  const classes = useStyles();
-  const [pageSize, setPageSize] = useState(5);
-  const [personName, setPersonName] = React.useState([]);
-  const [editRowsModel, setEditRowsModel] = useState({});
-  const handleEditRowsModelChange = React.useCallback((model) => {
-    setEditRowsModel(model);
-  }, []);
-
-  useEffect(() => {
+    console.log("In dispatch getSonglists");
     dispatch(getSonglists(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    dispatch(getPlaylists(id));
+    console.log("In dispatch get Playlists");
+    dispatch(getPlaylists());
   }, [id, dispatch]);
 
+  useEffect(() => {
+    console.log("In dispatch get Users");
+    dispatch(getUsers(id));
+  }, [id, dispatch]);
+
+  const classes = useStyles();
+  // const [personName, setPersonName] = React.useState([]);
+  // const [pageSize, setPageSize] = useState(5);
+  // const [editRowsModel, setEditRowsModel] = useState({});
+  // const handleEditRowsModelChange = React.useCallback((model) => {
+  //   setEditRowsModel(model);
+  // }, []);
+
+  const { playlists, isLoading } = useSelector((state) => state.musicPlaylists);
+  const { users, isLoadingU } = useSelector((state) => state.users);
   const songlists = useSelector((state) => state.songlist);
   const playlist = id ? playlists.find((p) => p._id === id) : null;
-  const users = useSelector((state) => state.users);
+
   const user = my_user?.result?._id
     ? users.find((i) => i._id === my_user?.result?._id)
     : null;
-  
-  const handleChange = (value) => {
-    console.log(value);
-  };
 
-  if (isLoading) {
+  if (isLoading || isLoadingU) {
+
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
         <CircularProgress size="7em" />
       </Paper>
     );
   }
-  const rows1 = songlists.map((songlist) => {
-    return {
-      id: songlist._id,
-      artist: songlist.artist,
-      title: songlist.title,
-      duration: songlist.duration,
-      genre: songlist.genre,
-      contributor: songlist.contributor,
-    };
-  });
-
-  const name_vals = users.map((one_user) => {
-    return {
-      label: one_user.name,
-      id: one_user._id,
-    };
-  });
-  const handleAddUser = (newValue) => {
-    dispatch(addContributor(my_user?.result?._id, id, newValue.id));
-  };
-
-  const permissionValid = users.filter(element => playlist.contributor.includes(element._id));
-  const userPermissionValid = permissionValid.find(p => p._id == my_user?.result?._id);
-  console.log(permissionValid)
-  console.log(my_user?.result?._id)
-  console.log(userPermissionValid);
+  const permissionValid = users.filter((element) =>
+    playlist.contributor.includes(element._id)
+  );
+  const userPermissionValid = permissionValid.find(
+    (p) => p._id == my_user?.result?._id
+  );
+  // const rows1 = songlists.map((songlist) => {
+  //   return {
+  //     id: songlist._id,
+  //     artist: songlist.artist,
+  //     title: songlist.title,
+  //     duration: songlist.duration,
+  //     genre: songlist.genre,
+  //     contributor: songlist.contributor,
+  //   };
+  // });
+  // const name_vals = users.map((one_user) => {
+  //   return {
+  //     label: one_user.name,
+  //     id: one_user._id,
+  //   };
+  // });
+  // const handleAddUser = (newValue) => {
+  //   dispatch(addContributor(my_user?.result?._id, id, newValue.id));
+  // };
   return (
     <Paper>
-      {/*This has to be changed to work on unique ids but rn it only works on names */}
+      {/*This whole segment from lines 124-135 should only show if playlist.creator is equal to my_user?.result?._id created on line 60*/}
       {playlist.name === my_user?.result?.name && (
-        <Autocomplete
-        value={personName}
-        onChange={(event, newValue) => {
-          setPersonName(newValue);
-          // handleAddUser(newValue);
-        }}
-        id="controllable-states-demo"
-        options={name_vals}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Name" />}
-      />
-      )
-      }
-      <Button onClick={() => handleAddUser(personName)}> Add User</Button>
+        <MusicPlaylistAddUser users={users} id={id} my_user={my_user} />
+      )}
+
       <div style={{ height: 400, width: props.width }}>
-        <DataGrid
+        <MusicPlaylistDataGrid songlists={songlists} />
+        {/* <DataGrid
           rows={rows1}
           columns={columns}
           pageSize={pageSize}
@@ -151,18 +144,19 @@ const MusicPlaylist = (props) => {
           pagination
           editRowsModel={editRowsModel}
           onEditRowsModelChange={handleEditRowsModelChange}
-        />
+        /> */}
         <CommentSection playlist={playlist} />
         {/*Need need to map playlist.contributors here and see if 'user' created on line 85 is in the contributors. 
         If they are, ONLY then should we show the FORMCREATESONGLIST and FORM ADD PICTURE divs */}
         {userPermissionValid && (
           <div>
-            <FormCreateSonglist playlist={playlist} users={user} id={id} />
+
+            <FormCreateSonglist playlist={playlist} user={user} id={id} />
             <FormAddPicture playlist={playlist} id={id} />
           </div>
         )}
-        
-        <Grid
+        <MusicPlaylistGallery playlists={playlists} id={id} />
+
           className={classes.mainContainer}
           container
           spacing={3}
@@ -175,7 +169,7 @@ const MusicPlaylist = (props) => {
               </Card>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
       </div>
     </Paper>
   );
