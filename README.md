@@ -53,3 +53,4 @@ Installation Steps:
 
 # Deployment
 Live Deployment: https://harmonysite.netlify.app/
+Deployment Instructions: https://github.com/ucsb-cs148-f21/project-t07-musictaste/blob/main/team/docs/DEPLOY.md
