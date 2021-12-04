@@ -33,8 +33,6 @@ Tech Stack:
 - MERN stack
 - Uses Javascript consistently through frontend and backend for ease of coding
 
-MVP Demo steps:
-
 Prerequistes:
 - Need to install the latest version of node on machine.
 
@@ -52,11 +50,6 @@ Installation Steps:
 - run npm start on both terminals
 - this will prompt the local browser to run the app!
 
-Functionality 
-- In this app you can currently log in and make some posts about music. For the log in, you can either make a new account with the form or use google authentication. Once logged in, you can make your own posts or like others posts. Next, we have a user profile page that can be toggled with the profile icon on the top header to the right. There will be more on this page to come later.
-
-Known Problems
-- One issue that we have right now is that even if you aren't the creator, you can delete and edit others posts. You should only be able to do that to your own posts and we will be addressing that right after the MVP.
 
 # Deployment
 Live Deployment: https://harmonysite.netlify.app/
