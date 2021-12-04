@@ -67,11 +67,6 @@ const PostDetails = () => {
           <Typography variant="body1">
             {moment(post.createdAt).fromNow()}
           </Typography>
-          <Divider style={{ margin: "20px 0" }} />
-          <Typography variant="body1">
-            <strong>Realtime Chat - coming soon!</strong>
-          </Typography>
-          <Divider style={{ margin: "20px 0" }} />
           <Typography variant="body1">
             <CommentSection post={post} />
           </Typography>
@@ -91,7 +86,8 @@ const PostDetails = () => {
       {recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">
-            More blogs by {post.name}:
+            More blogs: 
+            {/* More blogs by {post.name}: */}
           </Typography>
           <Divider />
           <div className={classes.recommendedPosts}>

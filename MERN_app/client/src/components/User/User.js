@@ -57,6 +57,7 @@ const User = () => {
   
   useEffect(() => {
     console.log("In dispatch get Posts"); 
+    
     dispatch(getPostsBySearch({search: my_user?.result?.name, tags: []}));
   }, [id, dispatch]);
   const playlists = useSelector((state) => state.musicPlaylists);
@@ -71,7 +72,6 @@ const User = () => {
   const elements = [];
   for (let i = 0; i < 9; i++) {
     if (posts.posts[i]) {
-      
       elements.push(
         <PlaylistPreview
           className={classes2.fileInput}
@@ -85,7 +85,7 @@ const User = () => {
     }
   }
   console.log(posts.posts);
-
+  console.log(user.name)
   return (
     <Container>
       <div class="blocks">
@@ -99,7 +99,7 @@ const User = () => {
           <Grid item container direction="column" xs={12} md={8} spacing={1}>
             <Grid item>
               <ThemeProvider theme={theme}>
-              <Typography variant="h4"><b>My Blog Posts</b></Typography>
+              <Typography variant="h4"><b>Blog Posts</b></Typography>
               </ThemeProvider>
             </Grid>
             <Grid item>

@@ -22,11 +22,12 @@ const App = () => {
             component={() => <Redirect to="/musicPlaylists" />}
           />
           <Route path="/posts" exact component={PostsHome} />
-          <Route
+          {/* <Route
             path="/auth"
             exact
             component={() => (!user ? <Auth /> : <Redirect to="/posts" />)}
-          />
+          /> */}
+          <Route path="/auth" exact component={Auth} />
           <Route path="/posts/search" exact component={PostsHome} />
           <Route path="/posts/:id" component={PostDetails} />
           <Route path="/users/:id" exact component={User}></Route>

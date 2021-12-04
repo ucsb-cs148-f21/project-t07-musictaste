@@ -20,7 +20,7 @@ export const getPost = async (req, res) => {
 export const getPosts = async (req, res) => {
   const { page } = req.query;
   try {
-    const LIMIT = 3;
+    const LIMIT = 8;
     const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     const total = await PostMessage.countDocuments({});
     const posts = await PostMessage.find()
