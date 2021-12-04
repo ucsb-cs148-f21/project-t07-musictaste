@@ -13,7 +13,7 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <BrowserRouter>
-      <Container maxidth="xl">
+      <Container maxWidth="xl">
         <Navbar />
         <Switch>
           <Route

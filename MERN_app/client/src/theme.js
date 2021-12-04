@@ -6,6 +6,8 @@ import Bebas_Neue from "./fonts/Bebas_Neue/BebasNeue-Regular.ttf";
 
 const raleway = "'Raleway', sans-serif";
 const openSans = "'Open Sans', sans-serif";
+const rubik = "'Rubik', rubik";
+const almarai = "'Almarai', almarai";
 
 // const raleway = {
 //     fontFamily: 'Raleway',
@@ -56,7 +58,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: { raleway, openSans },
+    fontFamily: { raleway, openSans, rubik, almarai, rubik, rubik, rubik, rubik},
   },
 });
 

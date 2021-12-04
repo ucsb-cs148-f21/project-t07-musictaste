@@ -1,5 +1,12 @@
-import { Container, Grid, Paper, Typography } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  CircularProgress,
+} from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 // import Form from "../Form/Form";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,19 +15,32 @@ import FormUserProfile from "./FormUserProfile";
 import PictureUploader from "./PictureUploader";
 import MusicPlaylist from "../musicPlaylists/musicPlaylistCards/MusicPlayist/musicPlaylist";
 import PlaylistPreview from "./PlaylistPreview";
+import useStyles from "./styles";
 import { ClassNames } from "@emotion/react";
-import { getUser } from "../../actions/userProfile";
+import { getUser, getUsers } from "../../actions/userProfile";
+import { getPost, getPostsBySearch } from "../../actions/posts";
 import { getPlaylists } from "../../actions/musicPlaylist";
-
+import PostsHome from "../Posts/Post/PostsHome/Home";
+import Posts from "../Posts/Post/Post";
+import useStyles2 from "../Form/styles";
+import { useHistory } from "react-router-dom";
+import theme from "../../theme";
 const User = () => {
+  const history = useHistory();
+  const classes2 = useStyles2();
+  const my_user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
   const dispatch = useDispatch();
+  const classes = useStyles();
   useEffect(() => {
-    dispatch(getUser(id));
+    console.log("In dispatch get Users");
+    dispatch(getUsers(id));
   }, [id, dispatch]);
   useEffect(() => {
+    console.log("In dispatch get Playlists");
     dispatch(getPlaylists());
-  }, [id, dispatch])
+  }, [id, dispatch]);
+  
   // useEffect(() => {
   //   console.log("This is working rn");
   //   window.addEventListener("beforeunload", getUser(id));
@@ -30,8 +50,42 @@ const User = () => {
   //   };
   // }, []);
 
-  const users = useSelector((state) => state.users);
-  const playlists = useSelector((state) => state.musicPlaylists)
+  const { users, isLoadingU } = useSelector((state) => state.users);
+  const user = my_user?.result?._id
+    ? users.find((i) => i._id === my_user?.result?._id)
+    : null;
+  
+  useEffect(() => {
+    console.log("In dispatch get Posts"); 
+    dispatch(getPostsBySearch({search: my_user?.result?.name, tags: []}));
+  }, [id, dispatch]);
+  const playlists = useSelector((state) => state.musicPlaylists);
+  const posts = useSelector((state) => state.posts);
+  if (isLoadingU) {
+    return (
+      <Paper elevation={6} className={classes.loadingPaper}>
+        <CircularProgress size="7em" />
+      </Paper>
+    );
+  }
+  const elements = [];
+  for (let i = 0; i < 9; i++) {
+    if (posts.posts[i]) {
+      
+      elements.push(
+        <PlaylistPreview
+          className={classes2.fileInput}
+          playlistname={posts.posts[i].message}
+          imagesource={posts.posts[i].selectedFile}
+          click={(e) => {
+            history.push(`/posts/${posts.posts[i]._id}`);
+          }}
+        />
+      );
+    }
+  }
+  console.log(posts.posts);
+
   return (
     <Container>
       <div class="blocks">
@@ -44,14 +98,16 @@ const User = () => {
         >
           <Grid item container direction="column" xs={12} md={8} spacing={1}>
             <Grid item>
-              <Typography variant="h4">Music Diary</Typography>
+              <ThemeProvider theme={theme}>
+              <Typography variant="h4"><b>My Blog Posts</b></Typography>
+              </ThemeProvider>
             </Grid>
             <Grid item>
-              <Paper>{/* <MusicPlaylist /> */}</Paper>
+                {elements}
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <FormUserProfile users={users} playlists={playlists} />
+            <FormUserProfile user={user} playlists={playlists} />
           </Grid>
         </Grid>
       </div>
