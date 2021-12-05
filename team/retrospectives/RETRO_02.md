@@ -39,9 +39,11 @@ _start_:
 - pairworking (frontend and backend pairs)
 
 _stop_:
+- [we did try to think of items for this category but could not think of anything]
 
 _continue_:
 - meeting up in person to work on the project together -> designate a weekly meeting, Mondays beginning next week
+- even when not meeting together physically, look for more ways to work collaboratively
 
 _additional notes_: good job everybody for finishing the MVP and being voted honorable mention!
 
