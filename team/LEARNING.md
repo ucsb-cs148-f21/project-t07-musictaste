@@ -46,4 +46,7 @@ Tutorial Links:
 - Node.js:
     - insert
 - Spotify API:
-    - [Laszlo] https://www.youtube.com/watch?v=fVcz-1rVQcs PLUS the associated github at https://github.com/awicks44/Spotify-React
+    - [Laszlo] API calls with axios: https://www.youtube.com/watch?v=fVcz-1rVQcs PLUS the associated github at https://github.com/awicks44/Spotify-React
+    - [Laszlo] general developer dashboard: https://developer.spotify.com/dashboard/ 
+    - [Laszlo] console: https://developer.spotify.com/console/
+    - [Laszlo] authorization: https://developer.spotify.com/documentation/general/guides/authorization/ (we used the client credentials flow and going into the future we will also introduce the authorization code flow)
