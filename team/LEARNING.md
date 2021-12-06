@@ -10,10 +10,10 @@ Tech stack:
   - Node.js
 
 Existing Strengths:
- - Kevin:
- - KB:
- - Laszlo:
- - Brandon:
+- Kevin: kanban boards
+- KB: backend with mongo
+- Laszlo: none 🤪
+- Brandon: none 😋
 
 TODO:
 
@@ -42,6 +42,8 @@ Tutorial Links:
 - Express.js:
     - insert
 - React:
-    - insert
+    - [Laszlo] https://www.youtube.com/watch?v=Ke90Tje7VS0 this was so helpful
 - Node.js:
     - insert
+- Spotify API:
+    - [Laszlo] https://www.youtube.com/watch?v=fVcz-1rVQcs PLUS the associated github at https://github.com/awicks44/Spotify-React
