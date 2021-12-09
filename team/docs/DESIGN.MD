@@ -21,5 +21,9 @@ Our team began with a general feeling that the social services of big music stre
 
 Our team decided on the MERN stack for our project because we wanted to maintain the same language throughout our backend and frontend for the sake of simplicity, and the MERN stack stays consistent with javascript utilized across the backend and frontend. Knowing we wanted javascript consistent through our backend and frontend, we knew we would use Node JS for our backend runtime, so we decided on Express as a framework to wrap around that runtime because Express is lightweight and flexible.
 
+The overall structure of our project was then constructed from an amalgamation of tutorials on the MERN stack that our team found and used to learn the details of the MERN stack. In particular, the tutorials detailed at https://youtu.be/ngc9gnGgUdA by Youtube channel Javascript Mastery served as a basis for the structure of our project. We then used the basic functionality and skills learned from those tutorials to begin implementing the features we knew we needed to differentiate our site as unique.
+
+The tutorials themselves actually built the Blog Post functionality as a part of the learning process, simply branded as a separate function. Our team simply rebranded that baseline functionality into a blog post about music to match the goals of our project. We then set our goals on building a user profile page and collaborative playlist functionality, for which we used the basic structure of database parameters->backend controllers/models->frontend components learned from the basic skeleton of the Blogs Posts to implement playlists and unique user profiles in similar ways.
+
 # User Interface / UX Flow
-![Musix UX Flow](https://user-images.githubusercontent.com/40685456/143955606-4851c678-bc29-44e9-9e2e-44c670f609b8.png)
+![Harmony UX Flow](https://user-images.githubusercontent.com/40685456/145350187-8783939a-6119-4452-bcd6-8d73a6a34212.png)
