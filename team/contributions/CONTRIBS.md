@@ -2,14 +2,14 @@
 
 
 ## Karanveer Benipal
-
-- Handled the creation of music playlist feature
-- Handled the creation of the blogs feature
-- Worked on implementation of many of the apps features
-- Helped plan out future features
-- Assisted teammates in debugging their features
-- Set up the skeleton of the code which was then scaled throughout the course
-- Handled much of the data retrieval functions in the backend.
+- Worked on implementation of many of the apps features.
+- Handled the creation of music playlist feature. -> added the song grid, retrieving the data from backend, comments, etc.
+- Handled the creation of the blogs feature. -> added much of the blog functionality. 
+- Implemented the authentication/ google authentication feature.
+- Helped plan out future features.
+- Assisted teammates in debugging their features.
+- Set up the skeleton of the code which was then scaled throughout the course.
+- Handled much of the data retrieval functions in the backend for each of our features.
 
 ## Brandon Son
 
