@@ -29,3 +29,7 @@
 - Documented team's work, managed Kanban Board, oversaw project progress
 - Built User Manual and Design Document
 - Assisted in debugging across all efforts
+- Handled deploying project onto the cloud:
+  - Handled grooming backend for deployment onto Heroku, and handled managing Heroku deployment
+  - Handled grooming frontend for deployment onto Netlify
+- Built deployment instructions
