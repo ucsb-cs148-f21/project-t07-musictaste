@@ -3,10 +3,11 @@
 Team Name: Music Taste
 
 Project Description:
-  Music dump webapp where users can track the music they've listened to, similar to a diary where they can share on the profile their listens and their listening history, with collaborative playlists feature which allows users to make playlists with their friends.
+  Harmony is a site offering a community for music-lovers to connect and create with others. Form a User Profile through either our standard sign-up feature or sign in with Google Authentication to join our community and connect with others. Once you’re signed in, you can create public blog posts about your favorite songs, albums, and artists to share your feelings and spark discussions, or you can create public collaborative playlists and invite your friends to add songs or pictures to curate unique experiences together.
   
 User Roles:
-  Standard User: A standard user would have access to a customizable user profile and have the capability to create and contribute to collaborative playlists.
+  Registered User: A standard user has access to a customizable user profile and has the capability to create and contribute to collaborative playlists, as well as create and edit public blog posts.
+  Unregistered User: A user without a registered account has the ability to view public blogs and playlists.
 
 
 Team Members & GitHub Handles:
@@ -16,25 +17,17 @@ Team Members & GitHub Handles:
 - Kevin Tran @320trankt
 
 Tech Stack:
-- MERN stack
-- Uses Javascript consistently through frontend and backend for ease of coding
-
-Prerequistes:
-- Need to install the latest version of node on machine.
+- MERN stack:
+  - MongoDB
+  - Express
+  - Node.js
+  - React
 
 Dependencies:
 - React - runs the front end
 - Axios - is used to make https requests and handle their responses in client/src/api/index.js
 - express - eliminates boiler plate abd helped to make simpler api for creating end points
 - mongoose - connecting to database
-
-Installation Steps:
-- Download files from tag onto local machine
-- open up two terminals and cd into MERN_app/client and MERN_app/server
-- run npm install to get all dependencies 
-- run npm start on both terminals
-- this will prompt the local browser to run the app!
-
 
 # Deployment
 - Live Deployment: https://harmonysite.netlify.app/
