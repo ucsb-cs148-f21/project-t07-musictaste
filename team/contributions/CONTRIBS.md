@@ -13,7 +13,12 @@
 - Handled much of the data retrieval functions in the backend for each of our features.
 
 ## Brandon Son
-
+- Worked on implementing app features
+- Handled permissions for much of the site
+- Handled making the user profile page
+- Helped push data from the user to database
+- Implemented unit test for picture uplaoding feature
+- Helped scaling and implementing many of the modules throughout the site
 
 ## Laszlo
 - led and scribed scrum meetings (except retros which we alternated)
