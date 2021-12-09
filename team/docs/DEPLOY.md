@@ -31,7 +31,7 @@ From your backend terminal (which should be at project-t07-musictaste/MERN_app/s
 - Check the deployment using the Heroku dashboard
 ## Frontend
 Now you need to deploy a frontend webapp that will serve as the user interface to interact with the data called from the backend. To do this:
-- Navigate to project-t07-musictaste/MERN_app/client/src/api/index.js, then replace the URL in ```const API = axios.create({ baseURL: "https://localhost:3000" });``` with the url of the backend (accessible from your heroku dashboard) that you created in the previous section.
+- Navigate to project-t07-musictaste/MERN_app/client/src/api/index.js, then replace the URL in ```const API = axios.create({ baseURL: "https://musictaste-backend.herokuapp.com/" });``` with the url of the backend (accessible from your heroku dashboard) that you created in the previous section.
 - Run ```npm run build``` from project-t07-musictaste/MERN_app/client/
 - If ```npm run build``` fails, run ```rm -rf node_modules``` and ```npm install```, then try again.
 - Go to https://www.netlify.com/ and either sign up or log in to an existing account.
