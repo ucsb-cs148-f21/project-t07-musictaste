@@ -15,6 +15,10 @@
 
 
 ## Laszlo
+- led and scribed scrum meetings (except retros which we alternated)
+- contributed to Kanban Board management
+- implemented frontend and Spotify API call components of add song functionality and linked to KB's backend posting
+- styling (component positioning and display with material ui)
 
 
 ## Kevin Tran
