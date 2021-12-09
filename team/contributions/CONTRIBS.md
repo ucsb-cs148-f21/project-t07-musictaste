@@ -38,3 +38,4 @@
   - Handled grooming backend for deployment onto Heroku, and handled managing Heroku deployment
   - Handled grooming frontend for deployment onto Netlify
 - Built deployment instructions
+- Worked on builting routing to and from User Profile page with unique pages for each user
